@@ -1,0 +1,19 @@
+// Redis persistence: inspect and toggle RDB / AOF.
+//   docker exec -i pq_redis redis-cli < 03_persistence.redis
+
+// --- see current settings ---
+CONFIG GET save
+CONFIG GET appendonly
+CONFIG GET appendfsync
+
+// --- RDB snapshot now (background) ---
+BGSAVE
+
+// --- turn AOF on at runtime and make a durable write ---
+CONFIG SET appendonly yes
+CONFIG SET appendfsync everysec
+ZADD leaderboard 8888 test_player
+BGREWRITEAOF
+
+// confirm the value is there
+ZSCORE leaderboard test_player

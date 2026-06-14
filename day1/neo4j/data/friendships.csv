@@ -1,0 +1,17 @@
+player_a,player_b
+hero_07,mage_lily
+hero_07,tank_omar
+mage_lily,ninja_sara
+ninja_sara,archer_zoe
+archer_zoe,knight_max
+knight_max,giant_sam
+giant_sam,elf_mona
+tank_omar,ninja_sara
+hero_07,archer_zoe
+elf_mona,mage_lily
+ninja_sara,knight_max
+giant_sam,hero_07
+rogue_ali,hero_07
+witch_nina,mage_lily
+bard_kai,ninja_sara
+healer_amir,tank_omar

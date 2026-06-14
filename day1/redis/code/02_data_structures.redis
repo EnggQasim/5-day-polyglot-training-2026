@@ -1,0 +1,45 @@
+// Redis data structures tour. Feed to redis-cli:
+//   docker exec -i pq_redis redis-cli < 02_data_structures.redis
+
+// strings + counters
+SET player:1:name "hero_07"
+GET player:1:name
+SET visits 0
+INCR visits
+INCRBY visits 10
+GET visits
+
+// hashes
+HSET player:1 name "hero_07" country "PK" score 4200
+HGETALL player:1
+HINCRBY player:1 score 100
+
+// lists
+RPUSH recent_logins hero_07 mage_lily ninja_sara
+LRANGE recent_logins 0 -1
+
+// sets
+SADD online_players hero_07 mage_lily ninja_sara
+SCARD online_players
+SISMEMBER online_players hero_07
+
+// sorted sets (leaderboard)
+ZADD leaderboard 4200 hero_07
+ZADD leaderboard 5100 mage_lily
+ZADD leaderboard 6700 ninja_sara
+ZADD leaderboard 7300 elf_mona
+ZREVRANGE leaderboard 0 2 WITHSCORES
+ZREVRANK leaderboard hero_07
+ZINCRBY leaderboard 500 hero_07
+
+// RedisJSON
+JSON.SET item:sword $ '{"name":"sword","price":100,"tags":["weapon","metal"]}'
+JSON.GET item:sword
+JSON.SET item:sword $.price 120
+
+// RediSearch
+FT.CREATE idx:items ON HASH PREFIX 1 item: SCHEMA name TEXT price NUMERIC
+HSET item:1 name "fire sword" price 150
+HSET item:2 name "ice shield" price 90
+HSET item:3 name "fire potion" price 30
+FT.SEARCH idx:items "fire"

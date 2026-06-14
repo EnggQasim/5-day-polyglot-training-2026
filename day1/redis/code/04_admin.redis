@@ -1,0 +1,19 @@
+// Clustering info, eviction, TTL, and ACLs.
+//   docker exec -i pq_redis redis-cli < 04_admin.redis
+
+// memory + eviction policy
+CONFIG GET maxmemory
+CONFIG GET maxmemory-policy
+
+// expiry / TTL
+SET session:abc "user42"
+EXPIRE session:abc 30
+TTL session:abc
+
+// ACL: make a read-only reporting user
+ACL SETUSER reporter on >report_pass ~* +@read
+ACL LIST
+ACL GETUSER reporter
+
+// cluster info (works fully only on a real cluster)
+CLUSTER INFO

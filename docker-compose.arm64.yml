@@ -1,0 +1,25 @@
+# ============================================================
+# ARM64 override (Apple Silicon: M1/M2/M3, or other arm64 hosts)
+# ------------------------------------------------------------
+# The main docker-compose.yml uses the default Milvus image, which is
+# built for Intel (linux/amd64). On an arm64 machine that triggers:
+#   "The requested image's platform (linux/amd64) does not match
+#    the detected host platform (linux/arm64/v8)"
+# ...and Milvus runs under slow emulation.
+#
+# This file swaps Milvus for its native arm64 image so it runs fast.
+# etcd and minio are already multi-arch, so they need no change.
+#
+# USE IT BY ADDING -f FOR BOTH FILES:
+#   docker compose -f docker-compose.yml -f docker-compose.arm64.yml up -d
+#   docker compose -f docker-compose.yml -f docker-compose.arm64.yml ps
+#   docker compose -f docker-compose.yml -f docker-compose.arm64.yml down
+#
+# The Intel training laptops do NOT use this file — they just run
+# `docker compose up -d` with the main file.
+# ============================================================
+
+services:
+  milvus:
+    image: milvusdb/milvus:v2.4.4-20240531-8e7f36d9-arm64
+    platform: linux/arm64
