@@ -4,6 +4,7 @@
   "namespace": "pq",
   "fields": [
     { "name": "player", "type": "string" },
-    { "name": "points", "type": "int" }
+    { "name": "points", "type": "int" },
+    { "name": "country", "type": "string", "default": "??" }
   ]
 }

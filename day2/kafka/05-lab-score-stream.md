@@ -64,7 +64,7 @@ Output updates live:
 ### Deliverable for this track
 Commit both scripts and note: *How is this leaderboard different from the Redis sorted-set leaderboard you built on Day 1? When would you compute it from a Kafka stream vs store it directly in Redis?* (Hint: Kafka gives you the full history of events to recompute or feed many consumers; Redis gives you the instant current answer.)
 
-➡️ Next: **[../debezium/01-what-is-cdc.md](../debezium/01-what-is-cdc.md)**
+➡️ Next: **[06-reliability-and-delivery.md](06-reliability-and-delivery.md)**
 
 ---
 

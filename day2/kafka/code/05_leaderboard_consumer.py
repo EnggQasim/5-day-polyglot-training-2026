@@ -35,7 +35,15 @@ def main():
             if msg.error():
                 print("error:", msg.error())
                 continue
-            data = json.loads(msg.value())
+            raw = msg.value()
+            if not raw:                      # skip null/empty (e.g. tombstone) messages
+                continue
+            try:
+                data = json.loads(raw)
+            except json.JSONDecodeError:
+                print(f"skipping non-JSON message at "
+                      f"partition {msg.partition()}, offset {msg.offset()}: {raw!r}")
+                continue
             totals[data["player"]] += data["points"]
             print_board()
     except KeyboardInterrupt:

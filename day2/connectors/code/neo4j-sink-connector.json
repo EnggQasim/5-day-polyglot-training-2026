@@ -1,0 +1,14 @@
+{
+  "name": "pq-neo4j-sink",
+  "config": {
+    "connector.class": "org.neo4j.connectors.kafka.sink.Neo4jConnector",
+    "topics": "player-scores",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "neo4j.uri": "bolt://host.docker.internal:7687",
+    "neo4j.authentication.basic.username": "neo4j",
+    "neo4j.authentication.basic.password": "trainer123",
+    "neo4j.cypher.topic.player-scores": "MERGE (p:Player {name: event.player}) ON CREATE SET p.score = event.points ON MATCH SET p.score = coalesce(p.score,0) + event.points"
+  }
+}

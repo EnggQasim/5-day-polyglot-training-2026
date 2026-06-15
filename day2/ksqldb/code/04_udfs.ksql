@@ -1,0 +1,31 @@
+-- KSQLDB functions & UDFs.
+-- Open the CLI:  docker exec -it pq_ksqldb ksql http://localhost:8088
+-- (Assumes the player_scores stream from lesson 1 exists.)
+
+-- discover functions
+SHOW FUNCTIONS;
+DESCRIBE FUNCTION UCASE;
+DESCRIBE FUNCTION SUM;
+
+-- scalar built-ins (one row -> one value)
+SELECT player,
+       UCASE(player)  AS upper_name,
+       LEN(player)    AS name_length,
+       points * 2     AS double_points,
+       CASE WHEN points > 100 THEN 'big' ELSE 'small' END AS size
+FROM player_scores
+EMIT CHANGES;
+
+-- aggregate built-ins (across rows)
+SELECT player,
+       COUNT(*)    AS events,
+       SUM(points) AS total,
+       AVG(points) AS avg_points,
+       MAX(points) AS best
+FROM player_scores
+GROUP BY player
+EMIT CHANGES;
+
+-- A custom UDF would be CALLED like this (needs a Java jar in the
+-- server extension dir; not available in our training image):
+--   SELECT player, bonus(points) AS boosted FROM player_scores EMIT CHANGES;

@@ -59,14 +59,16 @@ Day 2 needs the **Day 1 PostgreSQL** running (for change-data-capture) **plus** 
 **Setup (first 30 min)** — start both stacks, enable Postgres logical replication, verify Kafka / Schema Registry / Connect / KSQLDB.
 
 **Morning — Concepts**
-- Kafka: brokers, topics, partitions, producers, consumers, consumer groups, offsets, delivery guarantees.
-- Debezium: what change-data-capture is and how it reads the Postgres WAL.
-- Schema Registry: why schemas matter, Avro, compatibility modes.
-- KSQLDB: streams vs tables, querying and aggregating streams.
+- Kafka: brokers, topics, partitions, producers, consumers, groups, offsets; reliability — ISR/replication, `acks`, idempotent producers, exactly-once.
+- Debezium: change-data-capture from the Postgres WAL (source).
+- Sink connectors: Kafka → Neo4j and a custom Kafka → Milvus sink.
+- Schema Registry: schemas, Avro, compatibility modes.
+- KSQLDB: streams vs tables, querying/aggregating, functions & UDFs.
 
 **Afternoon — Labs**
-- Kafka: Python producer/consumer streaming score events.
+- Kafka: producer/consumer score stream; throughput benchmark (≥10k msg/s).
 - Debezium: capture live `players` edits as Kafka messages.
+- Sinks: stream events into Neo4j nodes and Milvus embeddings.
 - Schema Registry: produce/consume Avro with a registered schema.
 - KSQLDB: build the live high-scores pipeline end to end.
 
@@ -83,21 +85,29 @@ Day 2 needs the **Day 1 PostgreSQL** running (for change-data-capture) **plus** 
 3. [Producers & consumers (Python)](kafka/03-producers-consumers.md)
 4. [Consumer groups & offsets](kafka/04-consumer-groups-offsets.md)
 5. [LAB: stream Pixel Quest score events](kafka/05-lab-score-stream.md)
+6. [Reliability & delivery (ISR, acks, idempotence, exactly-once)](kafka/06-reliability-and-delivery.md)
+7. [LAB: throughput benchmark (≥10k msg/s)](kafka/07-lab-throughput-benchmark.md)
 
-### 2. Debezium — Change Data Capture
+### 2. Debezium — Change Data Capture (source)
 1. [What is CDC?](debezium/01-what-is-cdc.md)
 2. [Register a Postgres connector](debezium/02-register-connector.md)
 3. [LAB: capture player changes live](debezium/03-lab-capture-player-changes.md)
 
-### 3. Schema Registry — agreed data shapes
+### 3. Sink connectors — Kafka → Neo4j & Milvus
+1. [Source vs sink](connectors/01-sink-connectors-intro.md)
+2. [Kafka → Neo4j sink](connectors/02-neo4j-sink.md)
+3. [Custom Kafka → Milvus sink](connectors/03-milvus-sink.md)
+
+### 4. Schema Registry — agreed data shapes
 1. [Why schemas?](schema-registry/01-why-schemas.md)
 2. [Avro & compatibility](schema-registry/02-avro-and-compatibility.md)
 3. [LAB: produce & consume Avro](schema-registry/03-lab-avro-produce-consume.md)
 
-### 4. KSQLDB — SQL on streams
+### 5. KSQLDB — SQL on streams
 1. [Streams vs tables](ksqldb/01-streams-vs-tables.md)
 2. [Querying streams](ksqldb/02-querying-streams.md)
-3. [LAB: live high-scores pipeline](ksqldb/03-lab-high-scores-pipeline.md)
+3. [Functions & UDFs](ksqldb/04-udfs.md)
+4. [LAB: live high-scores pipeline](ksqldb/03-lab-high-scores-pipeline.md)
 
 ---
 

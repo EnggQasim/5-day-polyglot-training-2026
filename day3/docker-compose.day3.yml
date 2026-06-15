@@ -1,0 +1,58 @@
+# ============================================================
+# Day 3 observability stack: Prometheus + Grafana + Loki + Jaeger
+# ------------------------------------------------------------
+# Run ALONGSIDE Day 1 (PostgreSQL + Redis):
+#   docker compose up -d                                   # Day 1 databases
+#   docker compose -f day3/docker-compose.day3.yml up -d   # Day 3 observability
+#
+# The FastAPI app runs on your laptop (uvicorn on :8000); these services
+# scrape / receive data from it. See 00-setup.
+#
+# UIs:
+#   Prometheus  http://localhost:9090
+#   Grafana     http://localhost:3000  (admin / admin)
+#   Jaeger      http://localhost:16686
+#   Loki        http://localhost:3100  (no UI; viewed inside Grafana)
+# ============================================================
+
+services:
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    container_name: pq_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    container_name: pq_grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
+      - loki
+
+  loki:
+    image: grafana/loki:2.9.8
+    container_name: pq_loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.60
+    container_name: pq_jaeger
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - "16686:16686"   # Jaeger UI
+      - "4317:4317"     # OTLP gRPC (our app sends traces here)
+      - "4318:4318"     # OTLP HTTP

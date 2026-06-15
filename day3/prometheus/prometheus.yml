@@ -1,0 +1,17 @@
+# Prometheus scrape configuration for Day 3.
+# It scrapes the FastAPI app's /metrics endpoint.
+# The app runs on your laptop (uvicorn :8000); from inside the Prometheus
+# container we reach the host via host.docker.internal.
+
+global:
+  scrape_interval: 5s          # pull metrics every 5 seconds
+
+scrape_configs:
+  - job_name: "pixelquest-api"
+    static_configs:
+      - targets: ["host.docker.internal:8000"]
+
+  # Prometheus also scrapes itself (handy for sanity checks)
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]

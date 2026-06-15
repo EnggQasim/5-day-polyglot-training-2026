@@ -85,7 +85,7 @@ DELETE bard_kai
 ### Deliverable for this track
 Commit the connector JSON. In your notes, answer: *Why is CDC safer than asking every app to publish its own events? Name one thing you could keep in sync this way (e.g. a Redis cache or a search index).*
 
-➡️ Next: **[../schema-registry/01-why-schemas.md](../schema-registry/01-why-schemas.md)**
+➡️ Next: **[../connectors/01-sink-connectors-intro.md](../connectors/01-sink-connectors-intro.md)**
 
 ---
 

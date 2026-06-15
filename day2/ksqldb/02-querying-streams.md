@@ -102,7 +102,7 @@ EMIT CHANGES;
 
 **Statements also in** [`code/02_transform_aggregate.ksql`](code/02_transform_aggregate.ksql).
 
-➡️ Next: the lab — **[03-lab-high-scores-pipeline.md](03-lab-high-scores-pipeline.md)**
+➡️ Next: **[04-udfs.md](04-udfs.md)** — built-in functions and UDFs.
 
 ---
 
