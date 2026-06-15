@@ -1,0 +1,37 @@
+-- Filter, transform, and aggregate the player_scores stream.
+-- (Run inside: docker exec -it pq_ksqldb ksql http://localhost:8088)
+
+-- filter: only big scores (push query, Ctrl+C to stop)
+SELECT player, points
+FROM player_scores
+WHERE points > 100
+EMIT CHANGES;
+
+-- transform: add computed columns
+SELECT player, points, points * 2 AS double_points, UCASE(player) AS player_upper
+FROM player_scores
+EMIT CHANGES;
+
+-- derived stream (CSAS): a new topic of only high scores
+CREATE STREAM big_scores AS
+    SELECT player, points
+    FROM player_scores
+    WHERE points > 100
+    EMIT CHANGES;
+
+-- aggregate to a TABLE: running totals per player
+CREATE TABLE score_totals AS
+    SELECT player, SUM(points) AS total_points, COUNT(*) AS score_count
+    FROM player_scores
+    GROUP BY player
+    EMIT CHANGES;
+
+-- pull query: instant lookup of current total for one player
+SELECT player, total_points FROM score_totals WHERE player = 'hero_07';
+
+-- windowed aggregate: per-minute activity
+SELECT player, COUNT(*) AS scores_last_minute, SUM(points) AS points_last_minute
+FROM player_scores
+WINDOW TUMBLING (SIZE 1 MINUTE)
+GROUP BY player
+EMIT CHANGES;

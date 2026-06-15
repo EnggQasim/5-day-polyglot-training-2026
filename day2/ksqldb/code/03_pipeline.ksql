@@ -1,0 +1,29 @@
+-- LAB: live high-scores pipeline.
+-- Feed it by running day2/kafka/code/05_score_generator.py in another terminal.
+-- Open the CLI:  docker exec -it pq_ksqldb ksql http://localhost:8088
+
+-- read the topic as a stream
+CREATE STREAM player_scores (player VARCHAR, points INT)
+  WITH (KAFKA_TOPIC='player-scores', VALUE_FORMAT='JSON', PARTITIONS=3);
+
+-- 1) high scores only -> their own topic/stream
+CREATE STREAM high_scores AS
+  SELECT player, points FROM player_scores
+  WHERE points > 400
+  EMIT CHANGES;
+
+-- 2) running total per player (a TABLE = current value per key)
+CREATE TABLE score_totals AS
+  SELECT player, SUM(points) AS total_points, COUNT(*) AS n
+  FROM player_scores
+  GROUP BY player
+  EMIT CHANGES;
+
+-- watch live high scores (push)
+SELECT player, points FROM high_scores EMIT CHANGES;
+
+-- instant lookup of one player's total (pull)
+SELECT player, total_points, n FROM score_totals WHERE player = 'elf_mona';
+
+-- live leaderboard (push over the table)
+SELECT player, total_points FROM score_totals EMIT CHANGES;

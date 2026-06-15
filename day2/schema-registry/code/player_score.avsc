@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "name": "PlayerScore",
+  "namespace": "pq",
+  "fields": [
+    { "name": "player", "type": "string" },
+    { "name": "points", "type": "int" }
+  ]
+}

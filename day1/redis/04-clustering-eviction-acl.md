@@ -114,8 +114,9 @@ The two loops look almost identical; the only difference is that the pipelined v
 
 Redis **Functions** let you store a small script (in Lua) on the server and call it by name. The logic runs **inside Redis**, atomically, close to the data.
 
+The library is saved as a file, [`code/06_functions.lua`](code/06_functions.lua):
+
 ```lua
--- a function that adds points and returns the new rank (saved as a library)
 #!lua name=pq
 redis.register_function('add_and_rank', function(keys, args)
   redis.call('ZINCRBY', keys[1], args[2], args[1])
@@ -123,16 +124,50 @@ redis.register_function('add_and_rank', function(keys, args)
 end)
 ```
 
-Load and call it:
+The first line `#!lua name=pq` is required: it tells Redis the script language and names the **library** `pq`. `register_function` adds one callable function, `add_and_rank`.
 
+### How to actually load it (this is the part that trips people up)
+
+`FUNCTION LOAD` takes the **whole library as one argument**. Pasting multi-line Lua into `redis-cli` by hand does not work well. The reliable way is to pipe the **file** in using `redis-cli -x` (the `-x` flag reads the last argument from standard input):
+
+```bash
+docker exec -i pq_redis redis-cli -x FUNCTION LOAD REPLACE < day1/redis/code/06_functions.lua
 ```
-FUNCTION LOAD "<the lua text above>"
-FCALL add_and_rank 1 leaderboard hero_07 250
+
+It prints the library name back: `pq`. (`REPLACE` lets you load again after editing the file.)
+
+### Call it
+
+`FCALL` syntax is `FCALL <function> <numkeys> <keys...> <args...>`. Here there is 1 key (the sorted set), then two args (member, points):
+
+```bash
+# make a leaderboard first
+docker exec -it pq_redis redis-cli ZADD leaderboard 4200 hero_07 7300 elf_mona 5100 mage_lily
+
+# add 250 points to hero_07 and get the new rank (0 = top)
+docker exec -it pq_redis redis-cli FCALL add_and_rank 1 leaderboard hero_07 250
 ```
 
-Use Functions when you want several commands to run together as one fast, atomic step on the server.
+So `keys[1]=leaderboard`, `args[1]=hero_07`, `args[2]=250`. The function adds the points **and** returns the new rank in a single atomic server-side step.
 
-**Run the file:** [`code/04_admin.redis`](code/04_admin.redis)
+### Useful management commands
+
+```bash
+docker exec -it pq_redis redis-cli FUNCTION LIST     # see loaded libraries
+docker exec -it pq_redis redis-cli FUNCTION DELETE pq  # remove the library
+```
+
+### Prefer Python? (no shell-quoting pain)
+
+The script [`code/06_load_function.py`](code/06_load_function.py) loads the same file and calls the function with `r.function_load(...)` and `r.fcall(...)`:
+
+```bash
+python day1/redis/code/06_load_function.py
+```
+
+Use Functions when you want several commands to run together as one fast, **atomic** step on the server, close to the data.
+
+**Run the admin file:** [`code/04_admin.redis`](code/04_admin.redis)
 
 ➡️ Next: the lab — **[05-lab-leaderboard.md](05-lab-leaderboard.md)**
 

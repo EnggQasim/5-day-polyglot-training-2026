@@ -1,0 +1,24 @@
+-- Create a stream over the player-scores topic and read it live.
+-- Open the CLI first:
+--   docker exec -it pq_ksqldb ksql http://localhost:8088
+
+-- what topics can ksqlDB see?
+SHOW TOPICS;
+
+-- define a stream over the JSON topic from the Kafka lab
+CREATE STREAM player_scores (
+    player VARCHAR,
+    points INT
+) WITH (
+    KAFKA_TOPIC = 'player-scores',
+    VALUE_FORMAT = 'JSON',
+    PARTITIONS = 3
+);
+
+SHOW STREAMS;
+DESCRIBE player_scores;
+
+-- push query: keep printing new events as they arrive (Ctrl+C to stop)
+SELECT player, points
+FROM player_scores
+EMIT CHANGES;

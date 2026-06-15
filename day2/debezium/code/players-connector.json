@@ -1,0 +1,17 @@
+{
+  "name": "pq-players-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "database.hostname": "host.docker.internal",
+    "database.port": "5432",
+    "database.user": "trainer",
+    "database.password": "trainer",
+    "database.dbname": "pixelquest",
+    "topic.prefix": "pq",
+    "table.include.list": "public.players",
+    "plugin.name": "pgoutput",
+    "slot.name": "pq_slot",
+    "publication.autocreate.mode": "filtered"
+  }
+}
