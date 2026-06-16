@@ -13,7 +13,7 @@ Today's tools run a small **Kubernetes** cluster on your laptop and load-test it
 | **helm** | the Kubernetes package manager | https://helm.sh/docs/intro/install/ |
 | **k6** | the load-testing tool | https://grafana.com/docs/k6/latest/set-up/install-k6/ |
 
-On Windows (our HP EliteBooks) the easiest route is `winget`:
+**On Windows** (our HP EliteBooks) the easiest route is `winget`:
 
 ```powershell
 winget install Kubernetes.minikube
@@ -23,6 +23,22 @@ winget install k6.k6
 ```
 
 (minikube needs Docker Desktop or Hyper-V — both already available from earlier days.)
+
+**On macOS** the easiest route is [Homebrew](https://brew.sh):
+
+```bash
+# install Homebrew first if you don't have it:
+#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install minikube       # also pulls in kubectl as a dependency
+brew install kubectl        # (explicit, in case it isn't already present)
+brew install helm
+brew install k6
+```
+
+(minikube needs a container/VM driver — **Docker Desktop** is simplest and is already installed from earlier days. On Apple Silicon, `minikube start` auto-selects the Docker driver.)
+
+> All four are also available as plain binaries if Homebrew isn't allowed in your environment — see each tool's official install page in the table above.
 
 Check versions:
 

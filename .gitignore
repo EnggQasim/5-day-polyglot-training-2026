@@ -1,0 +1,78 @@
+# ============================================================
+# .gitignore for the 5-Day Polyglot Training repo
+# Keeps build artifacts, dependencies, and local junk out of GitHub.
+# ============================================================
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+.installed.cfg
+wheels/
+
+# virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# test / coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------- Node / React (Day 4) ----------
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# logs & debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# package manager state (keep lockfiles if you want reproducible installs;
+# uncomment to ignore them instead)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ---------- Data / generated artifacts ----------
+# generated sample data from the Day 1 generators (regenerate locally)
+day1/postgresql/data/players.csv
+day1/milvus/data/item_vectors.npy
+day1/milvus/data/item_meta.csv
+
+# k6 / load-test output
+*.k6-results.json
+summary.json
+
+# ---------- Environment & secrets ----------
+.env
+.env.*
+!.env.example
+*.local
+
+# ---------- Editor / OS junk ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
