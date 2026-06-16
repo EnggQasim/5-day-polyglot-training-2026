@@ -23,6 +23,12 @@ uvicorn app:app --reload --port 8000
 
 Open **http://localhost:8000/docs** and work through the endpoints.
 
+![Swagger /docs for the full Pixel Quest API — list, get, summary, leaderboard, create](images/fa4-docs.png)
+
+Expand any endpoint, press **Try it out → Execute**, and Swagger calls it live (here, `GET /players`):
+
+![Swagger: GET /players executed, showing the live response and the full endpoint list](images/fa4-exec.png)
+
 ## Exercise it (so you have traffic for the observability lessons)
 
 From another terminal, or from `/docs`:
@@ -48,6 +54,18 @@ curl "http://localhost:8000/leaderboard?top=5"
 ```
 
 > `new_star` with 8000 should now be #1 on the leaderboard — the POST wrote to **both** PostgreSQL and Redis.
+
+Filtering players by country from the terminal:
+
+![Terminal: filter players by country — curl /players?country=PK](images/fa4-curl.png)
+
+`GET /players/{id}/summary` — player plus leaderboard rank from concurrent reads:
+
+![Terminal: the /summary response for one player](images/fa4-summary.png)
+
+Creating a player — the POST writes Postgres **and** the Redis leaderboard (201 Created):
+
+![Terminal: POST /players returns 201 Created](images/fa4-post.png)
 
 ---
 

@@ -1,0 +1,231 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - link "Skip to main content" [ref=e4] [cursor=pointer]:
+      - /url: "#pageContent"
+      - generic [ref=e5]: Skip to main content
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - link "Grafana" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - img "Grafana" [ref=e10]
+        - generic [ref=e13]:
+          - img [ref=e15]
+          - button "Search or jump to..." [ref=e17] [cursor=pointer]
+          - generic [ref=e18]:
+            - img [ref=e19]
+            - generic [ref=e21]: ⌘+k
+        - generic [ref=e22]:
+          - button "New" [ref=e23] [cursor=pointer]:
+            - img [ref=e24]
+            - img [ref=e26]
+          - button "Help" [ref=e29] [cursor=pointer]:
+            - img [ref=e30]
+          - button "News" [ref=e32] [cursor=pointer]:
+            - img [ref=e33]
+          - button "Profile" [ref=e35] [cursor=pointer]:
+            - img "User avatar" [ref=e36]
+      - generic [ref=e37]:
+        - button "Close menu" [ref=e39] [cursor=pointer]:
+          - img [ref=e40]
+        - navigation "Breadcrumbs" [ref=e42]:
+          - list [ref=e43]:
+            - listitem [ref=e44]:
+              - link "Home" [ref=e45] [cursor=pointer]:
+                - /url: /
+              - img [ref=e47]
+            - listitem [ref=e49]:
+              - link "Explore" [ref=e50] [cursor=pointer]:
+                - /url: /explore
+              - img [ref=e52]
+            - listitem [ref=e54]:
+              - generic "Prometheus" [ref=e55]
+        - generic [ref=e56]:
+          - generic [ref=e59]:
+            - button "Copy shortened URL" [ref=e60] [cursor=pointer]:
+              - img [ref=e61]
+            - button "Open copy link options" [ref=e63] [cursor=pointer]:
+              - img [ref=e64]
+          - button "Toggle top search bar" [ref=e67] [cursor=pointer]:
+            - img [ref=e69]
+    - generic [ref=e72]:
+      - navigation [ref=e74]:
+        - list "Navigation" [ref=e78]:
+          - generic [ref=e79]:
+            - button "Undock menu" [ref=e80] [cursor=pointer]:
+              - img [ref=e81]
+            - listitem [ref=e83]:
+              - link "Home" [ref=e87] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e89]:
+                  - img [ref=e90]
+                  - generic [ref=e92]: Home
+          - listitem [ref=e94]:
+            - generic [ref=e95]:
+              - button "Expand section Starred" [ref=e97] [cursor=pointer]:
+                - img [ref=e98]
+              - link "Starred" [ref=e102] [cursor=pointer]:
+                - /url: /dashboards?starred
+                - generic [ref=e104]:
+                  - img [ref=e105]
+                  - generic [ref=e107]: Starred
+          - listitem [ref=e109]:
+            - generic [ref=e110]:
+              - button "Expand section Dashboards" [ref=e112] [cursor=pointer]:
+                - img [ref=e113]
+              - link "Dashboards" [ref=e117] [cursor=pointer]:
+                - /url: /dashboards
+                - generic [ref=e119]:
+                  - img [ref=e120]
+                  - generic [ref=e122]: Dashboards
+          - listitem [ref=e124]:
+            - generic [ref=e125]:
+              - button "Expand section Explore" [ref=e127] [cursor=pointer]:
+                - img [ref=e128]
+              - link "Explore" [ref=e132] [cursor=pointer]:
+                - /url: /explore
+                - generic [ref=e134]:
+                  - img [ref=e135]
+                  - generic [ref=e137]: Explore
+          - listitem [ref=e139]:
+            - generic [ref=e140]:
+              - button "Expand section Alerting" [ref=e142] [cursor=pointer]:
+                - img [ref=e143]
+              - link "Alerting" [ref=e147] [cursor=pointer]:
+                - /url: /alerting
+                - generic [ref=e149]:
+                  - img [ref=e150]
+                  - generic [ref=e152]: Alerting
+          - listitem [ref=e154]:
+            - generic [ref=e155]:
+              - button "Expand section Connections" [ref=e157] [cursor=pointer]:
+                - img [ref=e158]
+              - link "Connections" [ref=e162] [cursor=pointer]:
+                - /url: /connections
+                - generic [ref=e164]:
+                  - img [ref=e165]
+                  - generic [ref=e167]: Connections
+          - listitem [ref=e169]:
+            - generic [ref=e170]:
+              - button "Expand section Administration" [ref=e172] [cursor=pointer]:
+                - img [ref=e173]
+              - link "Administration" [ref=e177] [cursor=pointer]:
+                - /url: /admin
+                - generic [ref=e179]:
+                  - img [ref=e180]
+                  - generic [ref=e182]: Administration
+      - main [ref=e183]:
+        - generic [ref=e185]:
+          - heading "Explore" [level=1] [ref=e186]
+          - generic [ref=e191]:
+            - navigation "Explore toolbar" [ref=e193]:
+              - navigation "Search links" [ref=e195]:
+                - generic [ref=e196]:
+                  - button "Content outline" [expanded] [ref=e198] [cursor=pointer]:
+                    - img [ref=e199]
+                    - generic [ref=e201]: Outline
+                  - generic [ref=e206] [cursor=pointer]:
+                    - img "Prometheus logo" [ref=e208]
+                    - textbox "Select a data source" [ref=e209]:
+                      - /placeholder: Prometheus
+                    - img [ref=e211]
+              - generic [ref=e213]:
+                - button "Split the pane" [ref=e215] [cursor=pointer]:
+                  - img [ref=e216]
+                  - generic [ref=e218]: Split
+                - button "Add" [ref=e220] [cursor=pointer]:
+                  - generic [ref=e221]: Add
+                  - img [ref=e222]
+                - generic [ref=e225]:
+                  - 'button "Time range selected: Last 1 hour" [ref=e226] [cursor=pointer]':
+                    - img [ref=e227]
+                    - img [ref=e229]
+                  - button "Zoom out time range" [ref=e231] [cursor=pointer]:
+                    - img [ref=e232]
+                - generic [ref=e235]:
+                  - button "Run query" [ref=e236] [cursor=pointer]:
+                    - img [ref=e237]
+                  - button "Auto refresh turned off. Choose refresh time interval" [ref=e240] [cursor=pointer]:
+                    - img [ref=e241]
+            - generic [ref=e244]:
+              - generic [ref=e248]:
+                - button "Collapse outline" [expanded] [ref=e250] [cursor=pointer]:
+                  - img "arrow-from-right" [ref=e251]
+                - button "Queries" [ref=e254] [cursor=pointer]:
+                  - img "arrow" [ref=e255]
+                  - generic [ref=e257]: Queries
+              - generic [ref=e260]:
+                - generic [ref=e262]:
+                  - generic "Query editor row" [ref=e265]:
+                    - generic [ref=e266]:
+                      - generic [ref=e268]:
+                        - generic [ref=e269]:
+                          - button "Collapse query row" [expanded] [ref=e270] [cursor=pointer]:
+                            - img [ref=e271]
+                          - generic [ref=e273]:
+                            - button "Query editor row title A" [ref=e274] [cursor=pointer]:
+                              - generic [ref=e275]: A
+                            - emphasis [ref=e276]: (Prometheus)
+                        - generic [ref=e277]:
+                          - button "Show data source help" [ref=e279] [cursor=pointer]:
+                            - img [ref=e280]
+                          - button "Duplicate query" [ref=e283] [cursor=pointer]:
+                            - img [ref=e284]
+                          - button "Hide response" [ref=e287] [cursor=pointer]:
+                            - img [ref=e288]
+                          - button "Remove query" [ref=e291] [cursor=pointer]:
+                            - img [ref=e292]
+                          - button "Drag and drop to reorder" [ref=e294]:
+                            - img "Drag and drop to reorder" [ref=e295]
+                      - generic [ref=e298]:
+                        - generic [ref=e299]:
+                          - button "Kick start your query" [ref=e300] [cursor=pointer]:
+                            - generic [ref=e301]: Kick start your query
+                          - generic [ref=e303]:
+                            - generic [ref=e304] [cursor=pointer]: Explain
+                            - generic [ref=e305]:
+                              - checkbox "Explain Toggle switch" [ref=e306]
+                              - generic "Toggle switch" [ref=e307] [cursor=pointer]:
+                                - img [ref=e308]
+                          - radiogroup [ref=e312]:
+                            - generic [ref=e313]:
+                              - radio "Builder" [ref=e314] [cursor=pointer]
+                              - generic [ref=e315] [cursor=pointer]: Builder
+                            - generic [ref=e316]:
+                              - radio "Code" [checked] [active] [ref=e317] [cursor=pointer]
+                              - generic [ref=e318] [cursor=pointer]: Code
+                        - generic [ref=e320]:
+                          - generic [ref=e435]:
+                            - button "Metrics browser" [ref=e436] [cursor=pointer]:
+                              - text: Metrics browser
+                              - img [ref=e437]
+                            - code [ref=e443]:
+                              - generic [ref=e444]:
+                                - generic [ref=e451]: Enter a PromQL query…
+                                - textbox "Editor content;Press Alt+F1 for Accessibility Options." [ref=e454]
+                          - 'button "Options Legend: Auto Format: Time series Step: auto Type: Both Exemplars: false" [ref=e405] [cursor=pointer]':
+                            - img [ref=e406]
+                            - generic [ref=e409]:
+                              - heading "Options" [level=6] [ref=e410]
+                              - generic [ref=e411]:
+                                - generic [ref=e412]: "Legend: Auto"
+                                - generic [ref=e413]: "Format: Time series"
+                                - generic [ref=e414]: "Step: auto"
+                                - generic [ref=e415]: "Type: Both"
+                                - generic [ref=e416]: "Exemplars: false"
+                  - generic [ref=e417]:
+                    - button "Add query" [ref=e418] [cursor=pointer]:
+                      - img [ref=e419]
+                      - generic [ref=e421]: Add query
+                    - button "Query history" [ref=e422] [cursor=pointer]:
+                      - img [ref=e423]
+                      - generic [ref=e425]: Query history
+                    - button "Query inspector" [ref=e426] [cursor=pointer]:
+                      - img [ref=e427]
+                      - generic [ref=e429]: Query inspector
+                - main [ref=e430]:
+                  - generic [ref=e432]: No data
+  - generic [ref=e455]:
+    - alert
+    - alert
+    - complementary
+    - complementary

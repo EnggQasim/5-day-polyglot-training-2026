@@ -91,9 +91,27 @@ uvicorn async_db:app --reload --port 8000
 
 (Day 1 stack must be up, and you must have run `pip install -r day3/requirements.txt`.)
 
+![Terminal: uvicorn starting the async app with the connection-pool lifespan](images/fa3-run.png)
+
 - `GET /players/1` → reads from PostgreSQL.
 - `GET /leaderboard?top=5` → reads from Redis.
 - `GET /players/1/summary` → reads both **concurrently**.
+
+The async endpoints in `/docs`:
+
+![Swagger /docs for the async endpoints](images/fa3-docs.png)
+
+`GET /players/{id}` (from Postgres) and `GET /leaderboard?top=5` (from Redis), from the terminal:
+
+![Terminal: one player from Postgres and the leaderboard from Redis](images/fa3-curl.png)
+
+`GET /players/{id}/summary` — player data from Postgres **and** rank from Redis, fetched concurrently with `asyncio.gather`:
+
+![Terminal: the /summary response — username, score and rank](images/fa3-summary.png)
+
+The leaderboard JSON opened straight in the browser:
+
+![Browser: the /leaderboard JSON response](images/fa3-leaderboard.png)
 
 ➡️ Next: the lab — **[04-lab-pixelquest-api.md](04-lab-pixelquest-api.md)**
 

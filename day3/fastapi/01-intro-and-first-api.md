@@ -55,11 +55,23 @@ uvicorn hello:app --reload --port 8000
 - `hello:app` = "in `hello.py`, use the variable `app`".
 - `--reload` = restart automatically when you edit the file.
 
+![Terminal: uvicorn starting the hello app on port 8000](images/fa1-run.png)
+
 ## Try it
 
 - Open **http://localhost:8000/** → `{"message":"Welcome to Pixel Quest"}`.
 - Open **http://localhost:8000/health** → `{"status":"ok"}`.
 - Open **http://localhost:8000/docs** → the **interactive documentation**. FastAPI built this from your code. Click an endpoint, press **Try it out → Execute**, and it calls your API live.
+
+![Browser: GET / returns the welcome JSON](images/fa1-root.png)
+
+![Browser: GET /health returns {"status":"ok"}](images/fa1-health.png)
+
+![Swagger /docs listing the root and /health endpoints](images/fa1-docs.png)
+
+Or call the same endpoints from the terminal with `curl`:
+
+![Terminal: curl localhost:8000/ and /health](images/fa1-curl.png)
 
 > The `/docs` page is one of FastAPI's best features: free, always-up-to-date API documentation that you and other teams can actually use.
 

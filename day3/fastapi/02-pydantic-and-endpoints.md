@@ -87,6 +87,20 @@ Open **http://localhost:8000/docs**. Every endpoint, every model, and every vali
 - `GET /players/2` (works) and `GET /players/999` (clean 404).
 - `POST /players` with a 1-letter username — watch it get rejected with a helpful message.
 
+![Swagger /docs listing the players endpoints and models](images/fa2-docs.png)
+
+Expand `GET /players`, press **Try it out → Execute**, and Swagger shows the live response:
+
+![Swagger: GET /players executed, showing the player list response](images/fa2-exec.png)
+
+The same call from the terminal — filter players by country:
+
+![Terminal: filter players by country — curl /players?country=PK](images/fa2-curl.png)
+
+…and a `POST /players` (201 Created) next to a missing player (404):
+
+![Terminal: POST /players returns 201, GET /players/999 returns 404](images/fa2-post.png)
+
 ➡️ Next: **[03-async-and-databases.md](03-async-and-databases.md)** — make it async and connect to real data.
 
 ---

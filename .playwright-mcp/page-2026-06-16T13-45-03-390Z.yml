@@ -1,0 +1,6 @@
+- main [ref=e6]:
+  - generic [ref=e10]:
+    - generic [ref=e13]: Fetching
+    - button "Cancel loading dashboard" [ref=e17] [cursor=pointer]:
+      - img [ref=e18]
+      - generic [ref=e20]: Cancel loading dashboard
