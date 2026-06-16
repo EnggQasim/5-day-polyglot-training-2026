@@ -30,6 +30,65 @@ You do **not** need to be an expert in every tool. The lessons start from simple
 
 ---
 
+## The technology stack (icons + names)
+
+Every tool used across the five days, grouped by where it shows up. Everything below the **Foundation** row runs inside **Docker** unless noted, so there is nothing extra to install.
+
+**🧰 Foundation & tooling** — installed natively on the laptop
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+![Ubuntu on WSL2](https://img.shields.io/badge/Ubuntu%20(WSL2)-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![Python](https://img.shields.io/badge/Python%203.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js%2020+-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Java JDK 17](https://img.shields.io/badge/Java%20JDK%2017-437291?style=for-the-badge&logo=openjdk&logoColor=white)
+
+**📦 Day 1 · Polyglot persistence**
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=redis&logoColor=white)
+![Neo4j](https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white)
+![Milvus](https://img.shields.io/badge/Milvus-00A1EA?style=for-the-badge&logo=milvus&logoColor=white)
+
+**🔄 Day 2 · Real-time streaming & connectors**
+
+![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)
+![Apache ZooKeeper](https://img.shields.io/badge/Apache%20ZooKeeper-D22128?style=for-the-badge&logo=apache&logoColor=white)
+![Debezium](https://img.shields.io/badge/Debezium-C73A30?style=for-the-badge&logoColor=white)
+![Schema Registry](https://img.shields.io/badge/Schema%20Registry-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)
+![ksqlDB](https://img.shields.io/badge/ksqlDB-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)
+
+**📊 Day 3 · APIs, async & observability**
+
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-425CC7?style=for-the-badge&logo=opentelemetry&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Grafana Loki](https://img.shields.io/badge/Loki-F0B429?style=for-the-badge&logo=grafana&logoColor=white)
+![Jaeger](https://img.shields.io/badge/Jaeger-60D0E4?style=for-the-badge&logo=jaeger&logoColor=black)
+
+**🖥️ Day 4 · Front-end & business intelligence**
+
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white)
+![RTK Query](https://img.shields.io/badge/RTK%20Query-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![Vis.js](https://img.shields.io/badge/Vis.js-2E8BC0?style=for-the-badge&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+
+**🚀 Day 5 · Deployment & load testing**
+
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![minikube](https://img.shields.io/badge/minikube-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![kubectl](https://img.shields.io/badge/kubectl-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Helm](https://img.shields.io/badge/Helm-0F1689?style=for-the-badge&logo=helm&logoColor=white)
+![k6](https://img.shields.io/badge/k6-7D64FF?style=for-the-badge&logo=k6&logoColor=white)
+
+> Icons are [shields.io](https://shields.io) badges (brand logos via [simple-icons](https://simpleicons.org)). A few tools have no official icon in that set (VS Code, Power BI, Debezium, Vis.js) and show as plain coloured badges with the name; ecosystem members reuse their family logo (Schema Registry & ksqlDB → Kafka, Loki → Grafana, minikube & kubectl → Kubernetes).
+
+---
+
 ## Day 1 in one paragraph
 
 Day 1 is about **storage engines** — the different kinds of databases. A relational database (PostgreSQL) is great for structured records and transactions. A cache (Redis) is great for very fast reads and simple data structures like leaderboards. A graph database (Neo4j) is great for relationships, like "friends of friends". A vector database (Milvus) is great for "find me things that are *similar*", which powers search and AI features. By the end of Day 1 you can explain **why** you would pick each one, and you have run real queries against all four.
