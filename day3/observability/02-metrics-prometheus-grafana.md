@@ -58,12 +58,17 @@ These are the numbers Prometheus scrapes.
 Open **http://localhost:9090**.
 
 - Go to **Status → Targets**: `pixelquest-api` should be **UP** (Prometheus is successfully scraping your app via `host.docker.internal:8000`).
+
+![Prometheus Targets page: the pixelquest-api target is UP](images/prometheus-targets.png)
+
 - Go to the **Graph** tab and try a query (this is **PromQL**, Prometheus's query language):
 
 ```promql
 # requests per second per endpoint, averaged over the last minute
 rate(http_requests_total[1m])
 ```
+
+![Prometheus Graph tab: rate(http_requests_total[1m]) plotted per endpoint, climbing as load.py runs](images/prometheus-rate-graph.png)
 
 ```promql
 # 95th percentile latency
@@ -82,6 +87,8 @@ Open **http://localhost:3000** (admin / admin). The **Prometheus** data source i
 2. Pick the **Prometheus** data source.
 3. Enter `rate(http_requests_total[1m])` and run it. You will see request rate per endpoint climb as `load.py` runs.
 4. Try the latency query too.
+
+![Grafana Explore charting rate(http_requests_total[1m]) against the Prometheus data source](images/grafana-explore-metrics.png)
 
 > From Explore you can click **Add to dashboard** to save a panel. A few panels — request rate, error rate, p95 latency — make a basic service dashboard.
 
