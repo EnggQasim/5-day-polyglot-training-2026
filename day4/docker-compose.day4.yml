@@ -1,0 +1,33 @@
+# ============================================================
+# Day 4 Business Intelligence: Metabase (open-source, self-hosted)
+# ------------------------------------------------------------
+# Metabase replaces Power BI for closed/secure environments.
+# It connects to the Day 1 PostgreSQL to build dashboards.
+#
+# Run ALONGSIDE Day 1 (PostgreSQL):
+#   docker compose up -d                                   # Day 1 databases
+#   docker compose -f day4/docker-compose.day4.yml up -d   # Metabase
+#
+# Open http://localhost:3001  (first run: create an admin account)
+#
+# Port note: Metabase normally uses 3000, but Grafana (Day 3) uses 3000,
+# so here we map it to 3001 on your laptop to avoid a clash.
+# ============================================================
+
+services:
+  metabase:
+    image: metabase/metabase:v0.50.8
+    container_name: pq_metabase
+    ports:
+      - "3001:3000"          # laptop 3001 -> container 3000
+    environment:
+      MB_DB_TYPE: h2          # Metabase's OWN storage (its app database).
+                              # Fine for training; use Postgres for production.
+    volumes:
+      - metabase_data:/metabase-data
+    # When adding a data source inside Metabase, connect to the Day 1 Postgres:
+    #   Host: host.docker.internal   Port: 5432
+    #   Database: pixelquest   User: trainer   Password: trainer
+
+volumes:
+  metabase_data:
