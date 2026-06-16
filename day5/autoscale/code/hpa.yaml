@@ -1,0 +1,21 @@
+# Horizontal Pod Autoscaler: add/remove Pods based on CPU.
+# Needs the metrics-server addon (minikube addons enable metrics-server)
+# and resources.requests set on the Deployment (we set cpu: 100m).
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: pixelquest
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: pixelquest          # the Deployment to scale (raw-manifest name)
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50   # add Pods when avg CPU > 50% of the request

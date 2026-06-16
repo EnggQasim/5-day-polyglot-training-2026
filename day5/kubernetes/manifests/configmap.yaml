@@ -1,0 +1,9 @@
+# A ConfigMap holds non-secret configuration, injected into Pods as env vars.
+# (Secrets work the same way but for sensitive values like passwords.)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pixelquest-config
+data:
+  GREETING: "Welcome to Pixel Quest on Kubernetes"
+  ENVIRONMENT: "training"

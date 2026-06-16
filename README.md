@@ -23,10 +23,10 @@ You do **not** need to be an expert in every tool. The lessons start from simple
 | **Day 1** | **Polyglot Persistence** | The four storage engines and *when to use each one*: **PostgreSQL** (relational), **Redis** (cache & data structures), **Neo4j** (graph), **Milvus** (vector). |
 | **Day 2** | **Real-Time Streaming & Connectors** | Move data between systems live using **Kafka**, **Debezium** (change-data-capture), **Schema Registry**, and **KSQLDB**. |
 | **Day 3** | **APIs, Async & Observability** | Build async services with **FastAPI**, add **OpenTelemetry** tracing, metrics with **Prometheus/Grafana**, logs with **Loki**, traces with **Jaeger**. |
-| **Day 4** | **Front-End & Business Intelligence** | A **React + TypeScript** UI (Redux Toolkit, RTK Query, graph view with Vis.js) plus **Power BI** dashboards. |
-| **Day 5** | **Deployment & Load Testing** | Package and run on **Kubernetes** (minikube, kubectl, Helm) and load-test 5,000 concurrent users with **k6**. |
+| **Day 4** | **Front-End & Business Intelligence** | A **React + TypeScript** UI (Redux Toolkit, RTK Query, graph view with Vis.js) plus **Metabase** dashboards (open-source BI, for closed environments). |
+| **Day 5** | **Deployment & Load Testing** | Package and run on **Kubernetes** (minikube, kubectl, Helm), auto-scale with an **HPA**, and load-test 5,000 concurrent users with **k6**. |
 
-> This repo currently contains **Day 1** in full. The other days will be added as the course continues.
+> **All five days are complete.** Each day folder (`day1/` … `day5/`) has its own `README.md`, lessons, runnable code, and a setup guide. Work through them in order.
 
 ---
 

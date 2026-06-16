@@ -1,0 +1,42 @@
+# A Deployment runs and keeps alive N copies (replicas) of the API Pod.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pixelquest
+  labels:
+    app: pixelquest
+spec:
+  replicas: 2                 # start with 2 copies
+  selector:
+    matchLabels:
+      app: pixelquest
+  template:                   # the Pod blueprint
+    metadata:
+      labels:
+        app: pixelquest
+    spec:
+      containers:
+        - name: api
+          image: pixelquest-api:1.0     # built into minikube (see lesson 2)
+          imagePullPolicy: IfNotPresent  # use the local image, don't pull from a registry
+          ports:
+            - containerPort: 8000
+          resources:                     # requests/limits enable autoscaling decisions
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+          readinessProbe:                # don't send traffic until /health is OK
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:                 # restart the container if it stops responding
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10

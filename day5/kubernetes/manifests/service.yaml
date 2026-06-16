@@ -1,0 +1,12 @@
+# A Service gives the Pods one stable address and load-balances across them.
+apiVersion: v1
+kind: Service
+metadata:
+  name: pixelquest
+spec:
+  type: ClusterIP            # reachable inside the cluster (we port-forward to reach it)
+  selector:
+    app: pixelquest          # send traffic to Pods with this label
+  ports:
+    - port: 80               # the Service port
+      targetPort: 8000       # the container port
