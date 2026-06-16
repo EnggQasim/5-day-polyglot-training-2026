@@ -73,6 +73,8 @@ Try these **LogQL** queries (Loki's query language):
 {app="pixelquest-api"} |= "not found"
 ```
 
+![Grafana Explore on the Loki data source: {app="pixelquest-api", level="WARNING"} with the logs-volume histogram and "player … not found" lines](images/grafana-loki-logs.png)
+
 - `{label="value"}` selects a log stream by label.
 - `|= "text"` keeps only lines containing that text.
 

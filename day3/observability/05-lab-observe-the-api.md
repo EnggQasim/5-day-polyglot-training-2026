@@ -33,6 +33,8 @@ rate(http_requests_total{status=~"4xx|5xx"}[1m])
 
 You should see a steady stream of 4xx — those are the `/players/9xx` requests that return 404. Metrics told you *"there are errors, and roughly how many."* Now find out *what* they are.
 
+![Grafana Explore: request rate per endpoint from Prometheus](images/grafana-explore-metrics.png)
+
 ---
 
 ## Step 3 — LOGS: what exactly is failing? (Grafana + Loki)
@@ -45,6 +47,8 @@ Open Grafana **Explore** → **Loki**:
 
 You will see lines like `WARNING player 953 not found`. Logs told you the **exact** events behind the error metric.
 
+![Grafana Explore on Loki: the WARNING "player … not found" lines behind the 4xx metric](images/grafana-loki-logs.png)
+
 ---
 
 ## Step 4 — TRACES: where does a request spend its time? (Jaeger)
@@ -52,6 +56,8 @@ You will see lines like `WARNING player 953 not found`. Logs told you the **exac
 Open **http://localhost:16686** → service **pixelquest-api** → **Find Traces** → open a `/players/{player_id}/summary` trace.
 
 Expand the spans. You can see the request span, the **`compute_summary`** child span, and how long the work took. Traces told you **where the time went** inside one request.
+
+![Jaeger: a /summary trace with the compute_summary span and its child reads](images/jaeger-trace.png)
 
 ---
 

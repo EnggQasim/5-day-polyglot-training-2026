@@ -75,6 +75,8 @@ Open **http://localhost:16686** (Jaeger UI):
 2. Click **Find Traces**.
 3. Click a `/players/{player_id}/summary` trace. You will see the request span with the **`compute_summary`** child span inside it, each with a duration.
 
+![Jaeger trace for GET /players/{player_id}/summary — the compute_summary span and its Postgres/Redis children, 4 spans total](images/jaeger-trace.png)
+
 > If `pixelquest-api` does not appear, make a few requests first and wait a few seconds — `BatchSpanProcessor` sends in batches.
 
 ---
