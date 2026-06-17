@@ -1,0 +1,39 @@
+- main [ref=e3]:
+  - heading "Pixel Quest UI" [level=1] [ref=e4]
+  - heading "Shared state with Redux Toolkit" [level=2] [ref=e5]
+  - generic [ref=e6]:
+    - text: "Show top:"
+    - 'combobox "Show top: Current topN in store: 5" [ref=e7]':
+      - option "3"
+      - option "5" [selected]
+      - option "10"
+    - generic [ref=e8]:
+      - text: "Current topN in store:"
+      - strong [ref=e9]: "5"
+  - table [ref=e10]:
+    - rowgroup [ref=e11]:
+      - row "# Player Score" [ref=e12]:
+        - columnheader "#" [ref=e13]
+        - columnheader "Player" [ref=e14]
+        - columnheader "Score" [ref=e15]
+    - rowgroup [ref=e16]:
+      - row "1 elf_mona 7300" [ref=e17]:
+        - cell "1" [ref=e18]
+        - cell "elf_mona" [ref=e19]
+        - cell "7300" [ref=e20]
+      - row "2 ninja_sara 6700" [ref=e21]:
+        - cell "2" [ref=e22]
+        - cell "ninja_sara" [ref=e23]
+        - cell "6700" [ref=e24]
+      - row "3 giant_sam 6200" [ref=e25]:
+        - cell "3" [ref=e26]
+        - cell "giant_sam" [ref=e27]
+        - cell "6200" [ref=e28]
+      - row "4 knight_max 5600" [ref=e29]:
+        - cell "4" [ref=e30]
+        - cell "knight_max" [ref=e31]
+        - cell "5600" [ref=e32]
+      - row "5 mage_lily 5100" [ref=e33]:
+        - cell "5" [ref=e34]
+        - cell "mage_lily" [ref=e35]
+        - cell "5100" [ref=e36]

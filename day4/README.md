@@ -118,6 +118,8 @@ Day 4 reuses the **Day 1 PostgreSQL** (for Metabase) and the **Day 3 FastAPI** (
 
 > Metabase uses port **3001** here so it does not clash with Grafana (Day 3) on 3000.
 
+> 📸 **Screenshots:** every lesson has its example captured inline. See them all in one place: **[`screenshots/README.md`](screenshots/README.md)**.
+
 ---
 
 ## End-of-day result (deliverable)

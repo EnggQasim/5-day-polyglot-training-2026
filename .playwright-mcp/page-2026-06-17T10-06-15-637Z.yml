@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day4/app — npm test (MSW)
+  - generic [ref=e8]: $ npm test RUN v2.1.9 day4/app ✓ src/components/LiveLeaderboard.test.tsx > LiveLeaderboard > renders players returned by the (mocked) API ✓ src/components/LiveLeaderboard.test.tsx > LiveLeaderboard > shows an error message if the API fails ✓ src/components/LeaderboardTable.test.tsx > LeaderboardTable > shows the heading and top players ✓ src/components/LeaderboardTable.test.tsx > LeaderboardTable > toggles between top 3 and all Test Files 2 passed (2) Tests 4 passed (4) Duration 591ms

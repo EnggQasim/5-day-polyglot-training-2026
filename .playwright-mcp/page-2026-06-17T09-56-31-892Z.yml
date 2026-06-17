@@ -1,0 +1,5 @@
+- main [ref=e3]:
+  - heading "Pixel Quest UI" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - heading "Friendships" [level=2] [ref=e6]
+    - paragraph [ref=e10]: Click a player to select.

@@ -1,0 +1,36 @@
+- main [ref=e3]:
+  - heading "Pixel Quest UI" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - heading "Live leaderboard" [level=2] [ref=e6]
+    - table [ref=e7]:
+      - rowgroup [ref=e8]:
+        - row "# Player Score" [ref=e9]:
+          - columnheader "#" [ref=e10]
+          - columnheader "Player" [ref=e11]
+          - columnheader "Score" [ref=e12]
+      - rowgroup [ref=e13]:
+        - row "1 elf_mona 7300" [ref=e14]:
+          - cell "1" [ref=e15]
+          - cell "elf_mona" [ref=e16]
+          - cell "7300" [ref=e17]
+        - row "2 ninja_sara 6700" [ref=e18]:
+          - cell "2" [ref=e19]
+          - cell "ninja_sara" [ref=e20]
+          - cell "6700" [ref=e21]
+        - row "3 giant_sam 6200" [ref=e22]:
+          - cell "3" [ref=e23]
+          - cell "giant_sam" [ref=e24]
+          - cell "6200" [ref=e25]
+        - row "4 knight_max 5600" [ref=e26]:
+          - cell "4" [ref=e27]
+          - cell "knight_max" [ref=e28]
+          - cell "5600" [ref=e29]
+        - row "5 mage_lily 5100" [ref=e30]:
+          - cell "5" [ref=e31]
+          - cell "mage_lily" [ref=e32]
+          - cell "5100" [ref=e33]
+  - generic [ref=e34]:
+    - heading "Player detail" [level=2] [ref=e35]
+    - generic [ref=e36]:
+      - text: "Player id:"
+      - spinbutton "Player id:" [ref=e37]

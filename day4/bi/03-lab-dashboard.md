@@ -26,6 +26,10 @@ If you haven't already, create and **Save** these (lesson 2):
 - Drag and resize the cards into a tidy layout (e.g. the two bars on top, the line full-width below, the pie in a corner).
 - **Save**.
 
+![The assembled Pixel Quest dashboard in Metabase with four charts](images/03-dashboard.png)
+
+*One page a manager can glance at every morning: top players (`g1`), average score & player count by country (`q2`), players per country (`q4`), and coins spent over time (`q3`) — all reading live from the same PostgreSQL the app uses.*
+
 ## Step 3 — make it interactive with a filter
 
 - On the dashboard, **Add a filter → Text/Category**, link it to the **`country`** column of the relevant cards.

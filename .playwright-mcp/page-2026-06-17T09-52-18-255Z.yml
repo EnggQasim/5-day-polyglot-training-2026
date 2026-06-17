@@ -1,0 +1,24 @@
+- main [ref=e3]:
+  - heading "Pixel Quest UI" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - heading "Leaderboard" [level=2] [ref=e6]
+    - table [ref=e7]:
+      - rowgroup [ref=e8]:
+        - row "# Player Score" [ref=e9]:
+          - columnheader "#" [ref=e10]
+          - columnheader "Player" [ref=e11]
+          - columnheader "Score" [ref=e12]
+      - rowgroup [ref=e13]:
+        - row "1 elf_mona 7300" [ref=e14]:
+          - cell "1" [ref=e15]
+          - cell "elf_mona" [ref=e16]
+          - cell "7300" [ref=e17]
+        - row "2 ninja_sara 6700" [ref=e18]:
+          - cell "2" [ref=e19]
+          - cell "ninja_sara" [ref=e20]
+          - cell "6700" [ref=e21]
+        - row "3 giant_sam 6200" [ref=e22]:
+          - cell "3" [ref=e23]
+          - cell "giant_sam" [ref=e24]
+          - cell "6200" [ref=e25]
+    - button "Show all" [ref=e26]

@@ -1,0 +1,26 @@
+[      75ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:21550
+[      87ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/favicon.ico:0
+[  182610ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8000/leaderboard?top=5:0
+[  182610ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8000/leaderboard?top=5:0
+[  182612ms] TypeError: Failed to fetch
+    at http://localhost:5173/src/App.tsx?t=1781689807153:24:5
+    at commitHookEffectListMount (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:16915:34)
+    at commitPassiveMountOnFiber (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:18156:19)
+    at commitPassiveMountEffects_complete (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:18129:17)
+    at commitPassiveMountEffects_begin (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:18119:15)
+    at commitPassiveMountEffects (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:18109:11)
+    at flushPassiveEffectsImpl (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19490:11)
+    at flushPassiveEffects (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19447:22)
+    at commitRootImpl (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19416:13)
+    at commitRoot (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19277:13)
+[  182612ms] TypeError: Failed to fetch
+    at http://localhost:5173/src/App.tsx?t=1781689807153:24:5
+    at commitHookEffectListMount (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:16915:34)
+    at invokePassiveEffectMountInDEV (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:18324:19)
+    at invokeEffectsInDev (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19701:19)
+    at commitDoubleInvokeEffectsInDEV (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19686:15)
+    at flushPassiveEffectsImpl (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19503:13)
+    at flushPassiveEffects (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19447:22)
+    at commitRootImpl (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19416:13)
+    at commitRoot (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:19277:13)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-BVI7NZOO.js?v=fb3b574c:18895:11)

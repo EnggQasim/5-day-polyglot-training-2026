@@ -19,6 +19,10 @@ LIMIT 10;
 ```
 Then pick the **Bar** visualization (X = username, Y = score). Save as *"Top 10 players"*.
 
+![Bar chart of the top 10 players by score in Metabase](images/02-top-players-bar.png)
+
+*`elf_mona` (7,300) leads — the same leaderboard the app shows, now as a business chart.*
+
 ---
 
 ## Question 2 — Average score by country (bar chart)
@@ -47,6 +51,10 @@ ORDER BY day;
 ```
 Visualize as **Line** (X = day, Y = coins_spent). Save as *"Coins spent over time"*.
 
+![Line chart of coins spent per day in Metabase](images/02-coins-line.png)
+
+*Daily coins spent — `date_trunc('day', …)` buckets the `purchases` rows, and the line shows the trend over the first days of February.*
+
 > `date_trunc('day', …)` buckets rows by day — the SQL cousin of Day 1's TimescaleDB `time_bucket` and Day 2's KSQLDB window.
 
 ---
@@ -54,6 +62,10 @@ Visualize as **Line** (X = day, Y = coins_spent). Save as *"Coins spent over tim
 ## Question 4 — Players per country (pie/row chart)
 
 **Builder only:** Browse → Players → **Summarize → Count**, **Group by → country** → visualize as **Pie** or **Row**. Save as *"Players per country"*.
+
+![Pie chart of players per country in Metabase](images/02-players-pie.png)
+
+*Players by country — `PK` is the biggest slice (41.67% of the 12 players). Built entirely with the point-and-click **Summarize → Count → Group by** flow, no SQL.*
 
 ---
 
