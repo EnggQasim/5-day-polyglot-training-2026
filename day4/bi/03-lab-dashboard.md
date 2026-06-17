@@ -35,6 +35,22 @@ If you haven't already, create and **Save** these (lesson 2):
 - On the dashboard, **Add a filter → Text/Category**, link it to the **`country`** column of the relevant cards.
 - Now a single dropdown filters the whole dashboard by country — pick `PK` and every linked card updates.
 
+![The dashboard with the Country filter set to PK; the by-country cards update](images/03-filter-pk.png)
+
+*With the **Country** filter set to `PK`, the linked cards update: `q2` shows a single PK bar (5 players) and `q4` becomes 100% PK (5 total). `g1` (top players) and `q3` (coins over time) stay full — they have no `country` column to link, which is exactly why the filter only touches the **relevant** cards.*
+
+> **Field filters on SQL cards (how the linking actually works):** a dashboard filter can only attach to a card that exposes the column. For the **builder** questions that's automatic; for **native SQL** cards you add a *field filter* variable and point it at the column. For `q2` and `q4` that means a `{{country}}` field filter mapped to `players.country`:
+>
+> ```sql
+> SELECT country, COUNT(*) AS players
+> FROM players
+> WHERE {{country}}        -- field filter → players.country; empty = no filter
+> GROUP BY country
+> ORDER BY players DESC;
+> ```
+>
+> In the SQL editor, set the `country` variable's type to **Field Filter → Players.Country**. Then on the dashboard, the **Country** filter offers these cards under "Add a filter → … → Select…". `g1`/`q3` aren't offered because they don't query `country`.
+
 ## Step 4 — keep it fresh / share it
 
 - **Auto-refresh:** the dashboard menu lets you set a refresh interval (e.g. every 5 minutes) for a wall display.

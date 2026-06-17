@@ -87,7 +87,7 @@ Captured from Metabase at `localhost:3001`, connected to the Day 1 `pixelquest` 
 |--------|-------|
 | [01 — connect Metabase](../bi/01-connect-metabase.md) | connection form, browse tables, Players table |
 | [02 — questions & visuals](../bi/02-questions-and-visuals.md) | bar (top players), line (coins), pie (players/country) |
-| [03 — LAB dashboard](../bi/03-lab-dashboard.md) | the assembled dashboard **(+ architecture diagram)** |
+| [03 — LAB dashboard](../bi/03-lab-dashboard.md) | the assembled dashboard, **+ filtered to PK** **(+ architecture diagram)** |
 
 ![Connection form](../bi/images/01-connection.png)
 ![Browse tables](../bi/images/01-browse-tables.png)
@@ -96,6 +96,7 @@ Captured from Metabase at `localhost:3001`, connected to the Day 1 `pixelquest` 
 ![Coins line](../bi/images/02-coins-line.png)
 ![Players pie](../bi/images/02-players-pie.png)
 ![Dashboard](../bi/images/03-dashboard.png)
+![Dashboard filtered to PK](../bi/images/03-filter-pk.png)
 
 ---
 
