@@ -68,6 +68,10 @@ kubectl get pods         # two pixelquest pods, should become Running/Ready
 kubectl get svc          # the pixelquest service
 ```
 
+![kubectl get all showing the deployment, 2 running pods, and the service](images/03-deploy.png)
+
+*`kubectl get all` after applying both manifests: the Deployment with 2/2 ready Pods, the ReplicaSet it created, and the `pixelquest` Service in front.*
+
 ## Reach the API
 
 `ClusterIP` services are internal, so port-forward to your laptop:
@@ -79,6 +83,10 @@ curl localhost:8080/players
 ```
 
 Call `/players` a few times — the `pod` field in the response changes, showing the Service **load-balancing** across the two replicas.
+
+![curl /health via port-forward, then repeated in-cluster calls returning different pods](images/03-loadbalance.png)
+
+*`kubectl port-forward` reaches the API for `/health`. To *see* the load-balancing, hit the Service from inside the cluster a few times — the `pod` field alternates between the two replicas. (A single `port-forward` connection pins to one Pod, so the round-robin shows best from in-cluster or under many connections.)*
 
 ➡️ Next: **[04-config-and-scaling.md](04-config-and-scaling.md)**
 

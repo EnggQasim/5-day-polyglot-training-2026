@@ -51,6 +51,10 @@ k6 run day5/loadtest/code/smoke.js
 
 Read the summary: `http_req_duration` (look at `avg` and `p(95)`), `http_reqs` (throughput), `checks` (% passed). If the smoke test is green, you're ready to turn up the load.
 
+![k6 smoke test summary: 100% checks passed, p95 ~12ms](images/01-smoke.png)
+
+*One VU for 30s: `100%` of checks pass, `p(95)` ≈ 12ms — the script and target work, so we can turn up the load.*
+
 ➡️ Next: **[02-writing-tests.md](02-writing-tests.md)**
 
 ---

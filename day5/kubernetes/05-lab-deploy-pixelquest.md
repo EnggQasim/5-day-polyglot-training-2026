@@ -56,6 +56,10 @@ kubectl get pods -w      # a new pod appears within seconds
 
 You never asked for a new Pod — the Deployment's controller reconciled back to the desired count. That's the core Kubernetes promise.
 
+![deleting a pod and a replacement immediately appearing as ContainerCreating](images/05-selfheal.png)
+
+*The moment a Pod is deleted, the deleted one goes `Terminating` and the controller already spins up a replacement (`ContainerCreating`) to keep the replica count at 2 — self-healing, no human action.*
+
 ---
 
 ## What you achieved

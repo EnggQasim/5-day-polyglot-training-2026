@@ -41,6 +41,10 @@ Confirm it's there:
 minikube image ls | grep pixelquest
 ```
 
+![minikube image build succeeding and the image listed](images/02-containerize.png)
+
+*`minikube image build` builds the image straight into the cluster's own Docker, and `minikube image ls` confirms `pixelquest-api:1.0` is there for Kubernetes to use.*
+
 > **Why this matters:** our `deployment.yaml` uses `image: pixelquest-api:1.0` with `imagePullPolicy: IfNotPresent`, so Kubernetes uses this **locally built** image instead of trying to pull it from an internet registry — important in a closed environment.
 
 ---

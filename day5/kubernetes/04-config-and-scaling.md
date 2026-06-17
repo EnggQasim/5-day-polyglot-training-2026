@@ -50,6 +50,10 @@ kubectl get pods            # watch it go to 5 pods
 
 Kubernetes starts 3 more Pods; the Service automatically begins load-balancing across all 5. Scale back with `--replicas=2`.
 
+![ConfigMap applied, then kubectl scale to 5 and get pods showing 5 running pods](images/04-scaling.png)
+
+*Apply the ConfigMap, then `kubectl scale ... --replicas=5` — the two original Pods stay (older `AGE`) and three new ones are created.*
+
 Or edit `replicas:` in `deployment.yaml` and re-`apply` — same result, but now it's in version control (the declarative way, which is preferred).
 
 ### Rolling updates

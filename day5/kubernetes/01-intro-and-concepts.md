@@ -28,6 +28,24 @@ Picture it:
    └─ Pod  [api container]   ◄─┘
 ```
 
+```mermaid
+flowchart LR
+    subgraph D["Deployment (replicas: 3)"]
+      P1["Pod · api"]
+      P2["Pod · api"]
+      P3["Pod · api"]
+    end
+    SVC(["Service<br/>(stable address)"])
+    C(["clients"])
+    C --> SVC
+    SVC -- "load-balances" --> P1
+    SVC -- "load-balances" --> P2
+    SVC -- "load-balances" --> P3
+    CTL{{"controller<br/>reconciles to 3"}} -. "replaces dead Pods" .-> D
+```
+
+*The **Deployment** keeps 3 Pods alive (a controller reconciles if one dies); the **Service** is the one stable address that load-balances across them.*
+
 ## Desired state, not steps
 
 The big idea: you don't tell Kubernetes *how* to start things step by step. You declare *what you want* ("3 replicas of this image, exposed on port 80") in YAML and `kubectl apply` it. A controller constantly checks and **reconciles** — if a Pod dies, it makes a new one to get back to 3. This is why k8s apps self-heal.

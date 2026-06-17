@@ -82,6 +82,10 @@ helm template my-test day5/helm/chart
 
 You'll see the same Deployment/Service as the raw manifests, but generated from values. Change a value and re-run to see it update.
 
+![helm template output showing the rendered Service and Deployment with values filled in](images/02-helm-template.png)
+
+*`helm template` fills the `{{ ... }}` placeholders from `values.yaml` and prints the final YAML — `replicas: 2`, `image: pixelquest-api:1.0`, name `pq-pixelquest` (from the release name) — without touching the cluster.*
+
 ➡️ Next: the lab — **[03-lab-package-and-install.md](03-lab-package-and-install.md)**
 
 ---

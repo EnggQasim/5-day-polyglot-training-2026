@@ -41,6 +41,12 @@ The script ramps `0 → 1000 → 5000`, holds at 5,000, then ramps down. While i
 - **HPA terminal:** CPU shoots above the 50% target; `REPLICAS` climbs toward `maxReplicas` (10).
 - **Pods terminal:** new `pixelquest` pods appear and become Ready; the Service spreads load across them.
 
+![kubectl get hpa during the 5k run: CPU climbs to 251% and replicas scale 3 → 6 → 10](images/03-hpa-5k.png)
+
+*As 5,000 VUs ramp up, average CPU climbs to **251%** of the request and the HPA scales the Deployment **3 → 6 → 10** Pods, capping at `maxReplicas`. (After the load stops it scales back to 2.)*
+
+> **Tip — running 5,000 VUs reliably:** `kubectl port-forward` is a single-connection proxy and falls over well before 5,000 VUs. For the big run, drive load from **inside the cluster** against the Service instead, so there's no laptop-side bottleneck — e.g. run k6 as a Job that targets `http://pixelquest` (set `BASE_URL=http://pixelquest`). Port-forward is fine for the smoke/50-VU tests.
+
 ## Step 4 — read the result
 
 When k6 finishes it prints a summary. Note these for your deliverable:
@@ -51,6 +57,10 @@ When k6 finishes it prints a summary. Note these for your deliverable:
 - **Threshold lines** — each shows ✓ (met) or ✗ (breached).
 
 A few minutes after the test ends, watch the HPA **scale back down** to `minReplicas` (2) as CPU falls — the cool-down.
+
+![k6 5k summary: ~1855 rps, 667k requests, error rate 3.81% (PASS), p95 4.59s (threshold breached)](images/03-stress-5k.png)
+
+*A real result from this one-node cluster: **667,795 requests at ~1,855 req/s**, error rate **3.81%** (under the 5% threshold ✓), but **p(95) latency 4.59s** blew past the 2s threshold ✗. The HPA did its job (scaled to 10), yet a single minikube node ran out of CPU at peak — see Step 5.*
 
 ## Step 5 — interpret it
 

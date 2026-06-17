@@ -62,6 +62,10 @@ kubectl get hpa -w
 
 As the 50 VUs hold, CPU rises and you should see the HPA bump replicas above 2.
 
+![k6 staged load summary: 41k requests, 343 rps, p95 196ms, 0% errors, both thresholds passed](images/02-load.png)
+
+*The staged 50-VU run: **~343 req/s**, **41,126 requests**, **0% errors**, and **p(95) = 196ms** — both thresholds pass. Meanwhile the `/work` CPU burn pushed average CPU to 126%, so the HPA scaled the Deployment from 2 to 6 Pods.*
+
 ## Reading the key metrics
 
 - **`http_req_duration`** — `avg`, `p(95)`, `max`. Latency. p95 is what you report.

@@ -91,6 +91,10 @@ You are ready for Day 5.
 
 ---
 
+![check_cluster.sh reporting all tools OK and the node Ready](images/check-cluster.png)
+
+*All four tools installed, the node `Ready`, and the metrics-server add-on enabled — the cluster is ready for Day 5.*
+
 ## Key commands you will use all day
 
 | Action | Command |

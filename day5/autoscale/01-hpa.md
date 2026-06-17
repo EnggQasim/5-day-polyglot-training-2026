@@ -11,6 +11,18 @@ Manual scaling (`kubectl scale`) needs you to watch and react. The **Horizontal 
  CPU falls  ──► HPA removes Pods (down to minReplicas)
 ```
 
+```mermaid
+flowchart LR
+    MS["metrics-server"] -- "CPU per Pod" --> HPA{{"HPA<br/>avg CPU vs 50% target"}}
+    HPA -- "CPU &gt; 50% → add Pods" --> UP["scale up<br/>(max 10)"]
+    HPA -- "CPU &lt; 50% → remove Pods" --> DOWN["scale down<br/>(min 2, after cool-down)"]
+    UP --> DEP["Deployment replicas"]
+    DOWN --> DEP
+    DEP -- "more/less load per Pod" --> MS
+```
+
+*A control loop: every ~15s the HPA compares average CPU (from metrics-server) against the 50% target and nudges the Deployment's replica count between `minReplicas` and `maxReplicas`.*
+
 ## What it needs (two prerequisites)
 
 1. **metrics-server** — supplies CPU/memory readings. We enabled it in setup:
@@ -54,6 +66,14 @@ kubectl apply -f day5/autoscale/code/hpa.yaml
 kubectl get hpa            # shows current CPU% vs target and current replicas
 kubectl get hpa -w         # watch it live
 ```
+
+![kubectl get hpa at rest showing cpu 3%/50% and 2 replicas](images/01-hpa-rest.png)
+
+*At rest: average CPU is `3%` — well under the `50%` target — so the HPA holds at `minReplicas` (2).*
+
+![kubectl get hpa under load: CPU climbs past target and replicas rise to 6](images/01-hpa-load.png)
+
+*Under the k6 load (next section): CPU climbs to `126%`, far above target, so the HPA adds Pods — here `2 → 4 → 6` — and the Service spreads traffic across them.*
 
 At rest, CPU is low and it stays at `minReplicas` (2). When the **k6 load test** (next section) hammers the `/work` endpoint, CPU climbs past 50% and you'll watch the HPA add Pods — up to 10 — then scale back down a few minutes after the load stops.
 

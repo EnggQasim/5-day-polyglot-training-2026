@@ -16,6 +16,18 @@ On Day-5 Kubernetes lessons you applied separate `deployment.yaml` and `service.
                        change values, not templates, per environment
 ```
 
+```mermaid
+flowchart LR
+    T["templates/<br/>deployment.yaml<br/>service.yaml"] --> CH["Helm chart"]
+    V["values.yaml<br/>(replicas, image, ports)"] --> CH
+    CH -- "helm install pq" --> R1["Release: pq<br/>(dev · 1 replica)"]
+    CH -- "helm install pq-prod --set replicaCount=6" --> R2["Release: pq-prod<br/>(prod · 6 replicas)"]
+    R1 --> K[("Kubernetes")]
+    R2 --> K
+```
+
+*One chart (templates + values) installs as many **releases** as you need — change values per environment instead of editing YAML.*
+
 ## The pieces
 
 - **Chart** — a packaged app: a folder with `Chart.yaml`, `values.yaml`, and `templates/`.

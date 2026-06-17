@@ -93,6 +93,10 @@ Then follow **[`00-setup/README.md`](00-setup/README.md)**.
 
 ---
 
+> 📸 **Screenshots:** every lesson has its command output captured inline. See them all in one place: **[`screenshots/README.md`](screenshots/README.md)**.
+
+---
+
 ## End-of-day result (deliverable)
 
 Commit the manifests, the Helm chart, and the k6 scripts, plus a short `notes.md`: *What did the HPA do during the 5k test? What was your p95 latency and error rate, and what would you change to handle more?*

@@ -1,4 +1,4 @@
-# Templated Deployment: the {{ ... }} placeholders are filled from values.yaml.
+# Templated Deployment: the placeholders below are filled from values.yaml.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

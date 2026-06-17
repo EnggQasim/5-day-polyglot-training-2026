@@ -25,6 +25,10 @@ helm list                 # shows release "pq"
 kubectl get all           # the deployment, 2 pods, and service Helm created
 ```
 
+![helm install creating release pq, helm list, and kubectl get all showing the created objects](images/03-helm-install.png)
+
+*One `helm install pq` creates the release and all its objects at once; `helm list` shows release `pq` (revision 1, status `deployed`), and `kubectl get all` shows the `pq-pixelquest` Deployment, Pods, and Service Helm generated.*
+
 `pq` is the **release name**. Reach the app the same way as before:
 
 ```bash
@@ -52,6 +56,10 @@ helm history pq           # list revisions
 helm rollback pq 1        # back to the first revision (replicaCount=2)
 kubectl get pods          # back to 2 pods
 ```
+
+![helm upgrade to 4 replicas, helm history showing 2 revisions, and rollback to revision 1](images/03-helm-lifecycle.png)
+
+*`helm upgrade --set replicaCount=4` makes revision 2 (4 Pods); `helm history` lists both revisions; `helm rollback pq 1` returns to revision 1 and the Deployment scales back to 2 Pods — config changes and rollbacks without editing any YAML.*
 
 ## Step 5 — uninstall
 
