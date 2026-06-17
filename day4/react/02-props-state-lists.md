@@ -91,6 +91,10 @@ export function Counter() {
 
 ---
 
+![The leaderboard list rendered from props, and the Counter button after three clicks](images/02-props-state-lists.png)
+
+*Left to right in the browser: the `players` array mapped to `<PlayerRow>` items (props + lists), and the `<Counter>` showing **state** after three clicks.*
+
 ## Props vs state (remember this)
 
 - **Props** come **from the parent** and are read-only inside the component.

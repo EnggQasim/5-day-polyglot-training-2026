@@ -36,6 +36,10 @@ cd day4/app
 npm test
 ```
 
+![Vitest output: both LeaderboardTable tests passing](images/01-rtl-pass.png)
+
+*Vitest runs the render test and the interaction test against the static `LeaderboardTable` — both green, in well under a second.*
+
 ---
 
 ## Testing interaction

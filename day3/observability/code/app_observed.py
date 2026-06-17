@@ -67,6 +67,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Pixel Quest API (observed)", lifespan=lifespan)
 
+# Let the Day 4 Vite app (http://localhost:5173) call this API from the browser.
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # the Vite dev server
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # add /metrics for Prometheus, and auto-trace every request to Jaeger
 Instrumentator().instrument(app).expose(app)
 FastAPIInstrumentor.instrument_app(app)

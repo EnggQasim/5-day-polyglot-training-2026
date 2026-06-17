@@ -95,6 +95,10 @@ curl -X POST http://localhost:8000/players \
 
 Within ~3s `ui_star` appears at the top — no page reload.
 
+![The live leaderboard and the player-detail panel showing player id 1](images/03-live-data.png)
+
+*The **Live leaderboard** polls the API every 3 seconds; typing an id into **Player detail** triggers the `skip`-gated `getPlayerSummary` query (here id `1` → `hero_07`, score 4200, rank 7).*
+
 ---
 
 ## What you achieved

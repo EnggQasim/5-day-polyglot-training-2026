@@ -10,6 +10,18 @@ Files: [`app/src/test/server.ts`](../app/src/test/server.ts), [`app/src/componen
 
 `LiveLeaderboard` calls `GET http://localhost:8000/leaderboard`. In a test we don't want a real server. MSW lets you say "when that URL is called, return *this* JSON" — so you test the component's behaviour against known data.
 
+```mermaid
+flowchart LR
+    T["Test renders<br/>&lt;LiveLeaderboard&gt;"] --> RQ["RTK Query<br/>fetch /leaderboard"]
+    RQ --> MSW{"MSW handler<br/>registered for<br/>this URL?"}
+    MSW -- "yes" --> MOCK["Return mock JSON<br/>(test_hero, test_mage)"]
+    MSW -- "no (real network)" --> NET["❌ real server<br/>(we avoid this)"]
+    MOCK --> R["Component renders<br/>the mocked rows"]
+    R --> A["findByText('test_hero')<br/>assertion passes"]
+```
+
+*MSW sits between the component and the network: the request never leaves the test process — it's answered by the handler in `server.ts`.*
+
 ## Step 1 — a mock server
 
 `src/test/server.ts`:
@@ -92,6 +104,12 @@ it("shows an error message if the API fails", async () => {
 cd day4/app
 npm test
 ```
+
+![Vitest output: all four tests passing, including the MSW-mocked LiveLeaderboard tests](images/02-msw-pass.png)
+
+*All four tests pass — including the two `LiveLeaderboard` tests that hit MSW: one for the mocked success data, one for the overridden 500 error path.*
+
+> **Node/jsdom note (already handled in `src/test/setup.ts`):** under Node 18+ with jsdom, RTK Query builds a `Request` carrying jsdom's `AbortSignal`, which Node's `fetch` rejects (`Expected signal to be an instance of AbortSignal`). The setup file drops that signal (we don't need request cancellation in tests). It also calls `store.dispatch(pqApi.util.resetApiState())` in `afterEach` so the shared store's cache doesn't leak a cached success into the error-path test.
 
 ---
 

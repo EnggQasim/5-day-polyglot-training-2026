@@ -64,6 +64,10 @@ export function GraphView() {
 }
 ```
 
+![A three-node Vis.js network: hero_07 — mage_lily — elf_mona](images/01-network.png)
+
+*Vis.js draws the three nodes and two edges into the `<div>`, then its physics engine lays them out automatically. You can drag the dots and zoom with the wheel.*
+
 Key points:
 - **`ref`** gives Vis.js the `<div>` to draw into.
 - The `useEffect` runs once (`[]`); we build the network there.

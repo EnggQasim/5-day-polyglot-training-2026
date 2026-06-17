@@ -34,6 +34,10 @@ export function LiveLeaderboard() {
 }
 ```
 
+![The live leaderboard list fetched from the Day 3 API with useEffect](images/03-useeffect-live.png)
+
+*After the first render, `useEffect` fetches `GET /leaderboard?top=5` from the Day 3 API and the list appears (the brief "Loading…" is replaced by the data).*
+
 Key points:
 - The **dependency array** `[]` controls when the effect runs. `[]` = once. `[playerId]` = whenever `playerId` changes.
 - We set `loading` state so the UI shows "Loading…" then the data.

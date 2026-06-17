@@ -98,6 +98,23 @@ export function TopNPicker() {
 - `useSelector` subscribes to a slice of state — the component re-renders when it changes.
 - `dispatch(setTopN(10))` sends an action; the reducer updates the store; everyone reading `topN` updates.
 
+![The TopNPicker dropdown set to 3, driving the table to show three rows](images/01-topn-picker.png)
+
+*Choosing **3** dispatches `setTopN(3)`; the reducer updates the store, and every component reading `s.ui.topN` (the label and the table) re-renders with the new value.*
+
+### How the data flows
+
+```mermaid
+flowchart LR
+    C["Component<br/>(TopNPicker)"] -- "dispatch(setTopN(3))" --> A["Action<br/>{type, payload: 3}"]
+    A --> R["Reducer<br/>(uiSlice, via Immer)"]
+    R -- "writes new state" --> S["Store<br/>{ ui: { topN: 3 } }"]
+    S -- "useSelector subscribes" --> V["Subscribed components<br/>re-render"]
+    V -. "reads topN" .-> C
+```
+
+*One-way data flow: components **dispatch** actions, reducers produce the next state in the **store**, and `useSelector` pushes the change back to every subscribed component.*
+
 That's Redux Toolkit: **slice → store → provider → useSelector/useDispatch.** Next we use its data-fetching half, RTK Query.
 
 ➡️ Next: **[02-rtk-query.md](02-rtk-query.md)**

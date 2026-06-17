@@ -45,6 +45,19 @@ If you haven't already, create and **Save** these (lesson 2):
                    └─ Metabase ─ dashboards (the business view)
 ```
 
+```mermaid
+flowchart LR
+    PG[("Day 1<br/>PostgreSQL<br/>(pixelquest)")]
+    PG --> API["Day 3 FastAPI<br/>:8000"]
+    API --> APP["React + TS app<br/>:5173<br/><i>players' live view</i>"]
+    PG --> MB["Metabase<br/>:3001"]
+    MB --> DASH["Dashboard<br/><i>the business view</i>"]
+    APP -.-> U(["👤 Players"])
+    DASH -.-> M(["📊 Business / managers"])
+```
+
+*The **same** PostgreSQL data reaches two audiences by two paths: through the API into the interactive app for players, and directly into Metabase for the business dashboard.*
+
 The **same data** now feeds two audiences: an interactive **app** for users and a **dashboard** for the business — both built on the platform from Days 1–3.
 
 ---

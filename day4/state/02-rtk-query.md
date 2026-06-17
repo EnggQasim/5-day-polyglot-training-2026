@@ -83,6 +83,26 @@ export function Leaderboard() {
 
 One line — `useGetLeaderboardQuery(5)` — gives you data, loading, and error. No `useEffect`, no manual state. Call the same hook in two components and RTK Query **fetches once and shares the cache**.
 
+![The leaderboard rendered from the RTK Query hook](images/02-rtk-query-list.png)
+
+*The same five players as the manual-`fetch` version in React-3 — but here a single `useGetLeaderboardQuery(5)` hook handled the request, loading state, and caching.*
+
+### What RTK Query does for you
+
+```mermaid
+flowchart TD
+    H["useGetLeaderboardQuery(5)"] --> Q{"In cache for arg = 5?"}
+    Q -- "yes (fresh)" --> CACHE["Return cached data<br/>(no network call)"]
+    Q -- "no" --> F["fetchBaseQuery →<br/>GET :8000/leaderboard?top=5"]
+    F --> ST["Store cache<br/>(pqApi reducer)"]
+    ST --> RET["Hook returns<br/>{ data, isLoading, error }"]
+    CACHE --> RET
+    RET --> C["Component re-renders"]
+    POLL["pollingInterval: 3000"] -. "re-runs the query on a timer" .-> F
+```
+
+*The hook reads from the cache first; on a miss it fetches, stores the result, and returns `{ data, isLoading, error }`. A second component calling the same hook reuses the cache instead of fetching again.*
+
 ## Near-live updates with polling
 
 Pass `pollingInterval` to refetch on a timer — handy for a leaderboard:

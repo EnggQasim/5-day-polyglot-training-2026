@@ -83,6 +83,12 @@ export function App() {
 
 Run `npm run dev`, open http://localhost:5173, and click the toggle.
 
+| Initial (top 3) | After clicking **Show all** |
+|---|---|
+| ![Leaderboard table showing the top three players](images/04-leaderboard-top3.png) | ![Leaderboard table expanded to show all five players](images/04-leaderboard-all.png) |
+
+*The button flips the `showAll` **state**; React re-renders the table with three rows or all five, and the label switches between "Show all" and "Show top 3".*
+
 ---
 
 ## What you achieved

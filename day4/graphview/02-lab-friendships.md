@@ -67,6 +67,10 @@ import { FriendshipsGraph } from "./components/FriendshipsGraph";
 
 Run `npm run dev`: drag the dots, zoom with the wheel, and click a player to see their name below the graph.
 
+![The friendships network: eight players connected by friendship edges](images/02-friendships.png)
+
+*The nine Day 1 friendship pairs become a network of eight players. The physics layout pulls connected players together — `ninja_sara` and `archer_zoe` sit central because they have the most friends. Clicking a node sets the "Selected:" line below.*
+
 ---
 
 ## Next step — load friendships from the API (optional)

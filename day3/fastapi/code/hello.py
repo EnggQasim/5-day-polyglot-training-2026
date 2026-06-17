@@ -7,6 +7,7 @@ Run (from this folder):
 
 Then open http://localhost:8000/docs
 """
+
 from fastapi import FastAPI
 
 app = FastAPI(title="Pixel Quest API - hello")
@@ -14,6 +15,9 @@ app = FastAPI(title="Pixel Quest API - hello")
 
 @app.get("/")
 def root():
+    """
+    Root endpoint that returns a welcome message.
+    """
     return {"message": "Welcome to Pixel Quest"}
 
 

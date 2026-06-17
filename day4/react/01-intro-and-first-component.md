@@ -79,6 +79,10 @@ export function App() {
 
 That is the core loop of React: **write a function that returns JSX, then use it as a tag.** Everything else builds on this.
 
+![The Pixel Quest UI in the browser showing the heading and the Hello component](images/01-hello.png)
+
+*The browser at **http://localhost:5173** — `<App />` renders the `<h1>` heading and the `<Hello />` component you just wrote.*
+
 > **JSX rules to remember:** return a single top-level element (wrap siblings in one parent or `<>…</>`), use `className` instead of `class`, and close every tag (`<img />`).
 
 ➡️ Next: **[02-props-state-lists.md](02-props-state-lists.md)** — pass data in, and render a list.

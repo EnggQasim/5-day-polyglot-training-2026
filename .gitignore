@@ -47,6 +47,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# ---------- Playwright (browser screenshots / MCP artifacts) ----------
+.playwright-mcp/
+playwright-report/
+test-results/
+
 # package manager state (keep lockfiles if you want reproducible installs;
 # uncomment to ignore them instead)
 # package-lock.json
