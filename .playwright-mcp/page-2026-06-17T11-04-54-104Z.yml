@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — HPA at rest
+  - generic [ref=e8]: "$ kubectl apply -f day5/autoscale/code/hpa.yaml horizontalpodautoscaler.autoscaling/pixelquest created $ kubectl get hpa # at rest: CPU well under target, min replicas NAME REFERENCE TARGETS MINPODS MAXPODS REPLICAS AGE pixelquest Deployment/pixelquest cpu: 3%/50% 2 10 2 2m46s"

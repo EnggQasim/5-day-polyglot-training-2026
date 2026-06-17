@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — k6 staged load test (50 VUs)
+  - generic [ref=e8]: "$ k6 run day5/loadtest/code/load.js █ TOTAL RESULTS ✓ status is 200 checks_succeeded...: 100.00% 41126 out of 41126 ✓ http_req_duration..: p(95)=196.1ms (threshold p(95)<500 PASS) ✓ http_req_failed....: 0.00% (threshold rate<0.01 PASS) http_reqs..........: 41126 342.67/s vus................: max=50 vus_max=50"

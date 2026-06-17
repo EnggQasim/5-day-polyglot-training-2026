@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — helm template
+  - generic [ref=e8]: "$ helm template pq day5/helm/chart | head -28 --- # Source: pixelquest/templates/service.yaml apiVersion: v1 kind: Service metadata: name: pq-pixelquest spec: type: ClusterIP selector: app: pixelquest ports: - port: 80 targetPort: 8000 --- # Source: pixelquest/templates/deployment.yaml # Templated Deployment: the placeholders below are filled from values.yaml. apiVersion: apps/v1 kind: Deployment metadata: name: pq-pixelquest labels: app: pixelquest spec: replicas: 2 selector: matchLabels: app: pixelquest template:"

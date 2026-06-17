@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — k6 smoke test
+  - generic [ref=e8]: "$ k6 run day5/loadtest/code/smoke.js █ TOTAL RESULTS checks_succeeded...: 100.00% 60 out of 60 ✓ status is 200 ✓ has leaderboard http_req_duration..: avg=5.3ms med=4.69ms p(95)=12.54ms max=17.86ms http_req_failed....: 0.00% 0 out of 30 http_reqs..........: 30 0.99/s vus................: 1 vus_max=1"

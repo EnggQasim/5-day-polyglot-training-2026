@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — self-healing
+  - generic [ref=e8]: "$ kubectl get pods NAME READY STATUS RESTARTS AGE pixelquest-776959f8b6-lwqx2 1/1 Running 0 22s pixelquest-776959f8b6-nvhp8 1/1 Running 0 2m47s $ kubectl delete pod pixelquest-776959f8b6-lwqx2 pod \"pixelquest-776959f8b6-lwqx2\" deleted from default namespace $ kubectl get pods # a replacement is already being created NAME READY STATUS RESTARTS AGE pixelquest-776959f8b6-lwqx2 1/1 Terminating 0 22s pixelquest-776959f8b6-nvhp8 1/1 Running 0 2m47s pixelquest-776959f8b6-xtzgc 0/1 ContainerCreating 0 0s"

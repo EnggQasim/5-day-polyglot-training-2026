@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — HPA scales 2 to 10 under 5,000 VUs
+  - generic [ref=e8]: "$ kubectl get hpa pixelquest -w # in-cluster k6 ramping 0 -> 5000 VUs NAME REFERENCE TARGETS MINPODS MAXPODS REPLICAS pixelquest Deployment/pixelquest cpu: 2%/50% 2 10 3 pixelquest Deployment/pixelquest cpu: 70%/50% 2 10 3 pixelquest Deployment/pixelquest cpu: 251%/50% 2 10 3 pixelquest Deployment/pixelquest cpu: 251%/50% 2 10 6 pixelquest Deployment/pixelquest cpu: 251%/50% 2 10 10 pixelquest Deployment/pixelquest cpu: 182%/50% 2 10 10 pixelquest Deployment/pixelquest cpu: 110%/50% 2 10 10 (a few minutes after the load stops, CPU falls and the HPA scales back to 2)"

@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — setup check
+  - generic [ref=e8]: "$ bash day5/00-setup/check_cluster.sh minikube : OK kubectl : OK (node Ready) helm : OK k6 : OK metrics-server addon: enabled If all show OK, you are ready for Day 5."

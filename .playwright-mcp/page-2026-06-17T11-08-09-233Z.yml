@@ -1,0 +1,3 @@
+- generic [ref=e2]:
+  - generic [ref=e7]: day5 — ConfigMap & scaling
+  - generic [ref=e8]: $ kubectl apply -f day5/kubernetes/manifests/configmap.yaml configmap/pixelquest-config created $ kubectl scale deployment pixelquest --replicas=5 deployment.apps/pixelquest scaled $ kubectl get pods NAME READY STATUS RESTARTS AGE pixelquest-776959f8b6-7cmrk 1/1 Running 0 2m11s pixelquest-776959f8b6-j6hzc 1/1 Running 0 7s pixelquest-776959f8b6-j74wl 1/1 Running 0 7s pixelquest-776959f8b6-nb45b 1/1 Running 0 7s pixelquest-776959f8b6-nvhp8 1/1 Running 0 2m11s
