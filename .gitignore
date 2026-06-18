@@ -67,6 +67,8 @@ summary.json
 .env
 .env.*
 !.env.example
+!*.example          # always keep *.example templates (e.g. .env.mcp.example, .mcp.json.example)
+.env.mcp            # the filled-in MCP secrets (Day 6) — never commit
 *.local
 
 # ---------- Editor / OS junk ----------

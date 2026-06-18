@@ -25,8 +25,9 @@ You do **not** need to be an expert in every tool. The lessons start from simple
 | **Day 3** | **APIs, Async & Observability** | Build async services with **FastAPI**, add **OpenTelemetry** tracing, metrics with **Prometheus/Grafana**, logs with **Loki**, traces with **Jaeger**. |
 | **Day 4** | **Front-End & Business Intelligence** | A **React + TypeScript** UI (Redux Toolkit, RTK Query, graph view with Vis.js) plus **Metabase** dashboards (open-source BI, for closed environments). |
 | **Day 5** | **Deployment & Load Testing** | Package and run on **Kubernetes** (minikube, kubectl, Helm), auto-scale with an **HPA**, and load-test 5,000 concurrent users with **k6**. |
+| **Day 6** *(advanced)* | **Claude Code, MCP & Spec-Driven Dev** | Advanced **Claude Code**, **MCP servers** for our stack (incl. **Blender** & **Unity**), and **Spec-Driven Development** with GitHub **Spec Kit**. |
 
-> **All five days are complete.** Each day folder (`day1/` … `day5/`) has its own `README.md`, lessons, runnable code, and a setup guide. Work through them in order.
+> **All five core days are complete**, plus an **advanced Day 6** bonus. Each day folder (`day1/` … `day6/`) has its own `README.md`, lessons, runnable code, and a setup guide. Work through them in order.
 
 ---
 

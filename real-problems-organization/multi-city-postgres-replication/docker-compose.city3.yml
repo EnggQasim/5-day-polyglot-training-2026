@@ -1,0 +1,72 @@
+# =============================================================================
+# CITY 3 — KARACHI  (Node #3)
+#   pg-city3         : primary  (app writes here)        host port 5435
+#   pg-city3-backup  : local HA standby (streaming)      host port 5445
+# Joins the shared external network "citynet" so it can sync with City1/City2.
+# =============================================================================
+name: city3-karachi
+
+networks:
+  citynet:
+    external: true
+
+volumes:
+  city3_data:
+  city3_backup_data:
+
+services:
+  pg-city3:
+    image: postgres:16
+    container_name: pg-city3
+    hostname: pg-city3
+    restart: unless-stopped
+    networks: [citynet]
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpass
+      POSTGRES_DB: citydb
+    command:
+      - postgres
+      - -c
+      - wal_level=logical
+      - -c
+      - max_wal_senders=10
+      - -c
+      - max_replication_slots=10
+      - -c
+      - max_worker_processes=16
+      - -c
+      - max_logical_replication_workers=8
+      - -c
+      - cluster.node_name=karachi
+    volumes:
+      - ./init/primary:/docker-entrypoint-initdb.d:ro
+      - city3_data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d citydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  pg-city3-backup:
+    image: postgres:16
+    container_name: pg-city3-backup
+    hostname: pg-city3-backup
+    restart: unless-stopped
+    networks: [citynet]
+    user: root
+    depends_on:
+      pg-city3:
+        condition: service_healthy
+    environment:
+      PRIMARY_HOST: pg-city3
+      REPL_USER: replicator
+      REPL_PASSWORD: replpass
+    entrypoint: ["/bin/bash", "/scripts/standby-entrypoint.sh"]
+    volumes:
+      - ./scripts/standby-entrypoint.sh:/scripts/standby-entrypoint.sh:ro
+      - city3_backup_data:/var/lib/postgresql/data
+    ports:
+      - "5445:5432"

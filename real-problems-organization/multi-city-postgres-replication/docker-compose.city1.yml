@@ -1,0 +1,72 @@
+# =============================================================================
+# CITY 1 — RAWALPINDI  (Node #1)
+#   pg-city1         : primary  (app writes here)        host port 5433
+#   pg-city1-backup  : local HA standby (streaming)      host port 5443
+# Joins the shared external network "citynet" so it can sync with City2/City3.
+# =============================================================================
+name: city1-rawalpindi
+
+networks:
+  citynet:
+    external: true
+
+volumes:
+  city1_data:
+  city1_backup_data:
+
+services:
+  pg-city1:
+    image: postgres:16
+    container_name: pg-city1
+    hostname: pg-city1
+    restart: unless-stopped
+    networks: [citynet]
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpass
+      POSTGRES_DB: citydb
+    command:
+      - postgres
+      - -c
+      - wal_level=logical          # required for logical (multi-city) replication
+      - -c
+      - max_wal_senders=10
+      - -c
+      - max_replication_slots=10
+      - -c
+      - max_worker_processes=16
+      - -c
+      - max_logical_replication_workers=8
+      - -c
+      - cluster.node_name=rawalpindi   # this node's name (row default)
+    volumes:
+      - ./init/primary:/docker-entrypoint-initdb.d:ro
+      - city1_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d citydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  pg-city1-backup:
+    image: postgres:16
+    container_name: pg-city1-backup
+    hostname: pg-city1-backup
+    restart: unless-stopped
+    networks: [citynet]
+    user: root                      # entrypoint chowns data dir then drops to postgres
+    depends_on:
+      pg-city1:
+        condition: service_healthy
+    environment:
+      PRIMARY_HOST: pg-city1
+      REPL_USER: replicator
+      REPL_PASSWORD: replpass
+    entrypoint: ["/bin/bash", "/scripts/standby-entrypoint.sh"]
+    volumes:
+      - ./scripts/standby-entrypoint.sh:/scripts/standby-entrypoint.sh:ro
+      - city1_backup_data:/var/lib/postgresql/data
+    ports:
+      - "5443:5432"
