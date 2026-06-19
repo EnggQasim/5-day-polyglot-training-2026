@@ -13,12 +13,12 @@ sel () { docker exec -i "$1" psql -U admin -d citydb -c \
   "SELECT node_origin, item, qty FROM orders ORDER BY created_at;"; }
 
 echo "==> inserting one row on each city primary"
-ins pg-city1 "INSERT INTO orders(item, qty) VALUES ('rawalpindi-widget', 5);"
-ins pg-city2 "INSERT INTO orders(item, qty) VALUES ('lahore-gadget', 3);"
-ins pg-city3 "INSERT INTO orders(item, qty) VALUES ('karachi-gizmo', 7);"
+ins pg-city1 "INSERT INTO orders(item, qty) VALUES ('d1', 5);"
+ins pg-city2 "INSERT INTO orders(item, qty) VALUES ('d2', 3);"
+ins pg-city3 "INSERT INTO orders(item, qty) VALUES ('d3', 7);"
 
 echo "==> waiting 4s for replication to converge..."
-sleep 4
+sleep 10
 
 for c in pg-city1 pg-city2 pg-city3; do
   echo; echo "================ $c (primary) ================"
